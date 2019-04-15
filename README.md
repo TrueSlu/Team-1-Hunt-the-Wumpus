@@ -4,6 +4,7 @@ Hunt the Wumpus 2019
 ## Links:
 
 [Github Repository](https://github.com/TrueSlu/Team-1-Hunt-the-Wumpus)
+
 [Github Project](https://github.com/users/TrueSlu/projects/2)
 ## Team Members:
 
