@@ -10,15 +10,18 @@ using System.Windows.Forms;
 
 namespace Team1_Wumpus
 {
-    public partial class Form1 : Form
+    public partial class TestControl : Form
     {
-        public Form1()
+        public TestControl()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
+            var player = new Player();
+            var trivia = new Trivia();
+            var highScoreManager = new HighScoreManager();
 
         }
     }
