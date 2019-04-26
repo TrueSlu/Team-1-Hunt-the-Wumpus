@@ -45,6 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cave.cs" />
+    <Compile Include="CaveComplex.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
