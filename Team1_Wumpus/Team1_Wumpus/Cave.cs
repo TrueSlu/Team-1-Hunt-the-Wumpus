@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,38 @@ namespace Team1_Wumpus
 {
     class CaveSystem
     {
-        public Cave[] System = new Cave[30];
+        public Cave[] System = new Cave[31]; // System[0] is unused
+
+        public CaveSystem(string fileName)
+        {
+
+        }
+
+        private void ReadFile(string fileName)
+        {
+            StreamReader sr = new StreamReader(fileName);
+            string inputText = sr.ReadLine();
+            while (inputText != null)
+            {
+                string[] strData = inputText.Split(',');
+                int caveNum = int.Parse(strData[0]);
+                int[] data = new int[6];
+                for (int i = 0; i <6; i++)
+                {
+                    data[i] = int.Parse(strData[i+1]);
+                }
+                
+                inputText = sr.ReadLine();
+                
+            }
+            sr.Close();
+        }
+
+        public int[] ShowAdjacents(int caveNumber)
+        {
+            //returns list with the adjacent caves
+            return System[caveNumber].AdjacentCaves;
+        }
     }
     class Cave
     {
@@ -16,21 +48,37 @@ namespace Team1_Wumpus
         public int[] AdjacentCaves { get; private set; } = new int[6];
         public int[] ConnectedCaves { get; private set; } = new int[6];
 
-        public Cave(int c, int[] ac, int[] cc)
+        //public Cave(int c, int[] ac, int[] cc)
+        //{
+        //    if (ac.Length != 6 || cc.Length != 6)
+        //    {
+        //        return;
+        //    }
+        //    else
+        //    {
+        //        CaveNumber = c;
+        //        AdjacentCaves = ac;
+        //        ConnectedCaves = cc;
+        //    }
+        //}
+
+        public Cave(int c, int[] cc)
         {
-            if (ac.Length != 6 || cc.Length != 6)
+            if (cc.Length != 6)
             {
                 return;
             }
             else
             {
                 CaveNumber = c;
-                AdjacentCaves = ac;
                 ConnectedCaves = cc;
+                CalculateAdjacentCaves();
             }
+
         }
 
         public Cave() { }
+
         public int FormatCaveNumber(int toFormat)
         {
             int corrected = toFormat % 30;
