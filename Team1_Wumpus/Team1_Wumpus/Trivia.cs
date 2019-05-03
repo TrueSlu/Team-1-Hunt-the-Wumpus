@@ -8,6 +8,6 @@ namespace Team1_Wumpus
 {
     public class Trivia
     {
-        List<Questions> Question = new List<Questions>();
+
     }
 }

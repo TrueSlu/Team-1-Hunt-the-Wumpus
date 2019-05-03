@@ -90,5 +90,27 @@ namespace WumpusTests
             Assert.AreEqual(true, didSpendCoins);
             Assert.AreEqual(expectedCoins, player.GoldCoins);
         }
+
+        [TestMethod]
+        public void Player_Test_Score_Calculation()
+        {
+            var player = new Player();
+            const int MAX_POINTS = 100;
+            bool isWumpusDead = true;
+            int arrows = 20;
+            int goldCoins = 13;
+            int turnsTaken = 47;
+            int wumpusScore = 0;
+            if (isWumpusDead)
+            {
+                wumpusScore = 50;
+            }
+
+            int expectedScore = MAX_POINTS - turnsTaken + goldCoins + (5 * arrows) + wumpusScore;
+
+            player.SetPlayerValuesForTesting(isWumpusDead, arrows, goldCoins, turnsTaken);
+            player.CalculateScore();
+            Assert.AreEqual(expectedScore, player.Score);
+        }
     }
 }
