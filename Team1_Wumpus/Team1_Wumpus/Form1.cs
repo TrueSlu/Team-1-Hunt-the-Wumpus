@@ -29,12 +29,20 @@ namespace Team1_Wumpus
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            if (nameBox.Text == "")
+            {
+                MessageBox.Show("Please enter your name to play.");
+            }
 
+
+            int numberOfAvailableCaves
+
+            Game gameObject = new Game(caveSystem, nameBox.Text);
         }
 
         private void highScores_Click(object sender, EventArgs e)
         {
-            List<HighScore> highScores = HighScoreManager.getHighScores()
+            List<HighScore> highScores = HighScoreManager.getHighScores();
         }
     }
 }

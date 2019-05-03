@@ -6,19 +6,25 @@ using System.Threading.Tasks;
 
 namespace Team1_Wumpus
 {
-    public class HighScore
+    public class Game
     {
 
-        //class for the HighScoreManager to create new instantiations of
-        public int Score { get; set; }
+        public String CaveSystem { get; set; }
         public String Name { get; set; }
-
-        HighScore(int s, String n)
+        public Game(String c, String n)
         {
-            Score = s;
+            Cave.initializeCave(c);
+
             Name = n;
+            CaveSystem = c;
+
+
+
         }
 
+        public void MakeMove()
+        {
 
+        }
     }
 }
