@@ -26,5 +26,15 @@ namespace Team1_Wumpus
         {
 
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void highScores_Click(object sender, EventArgs e)
+        {
+            List<HighScore> highScores = HighScoreManager.getHighScores()
+        }
     }
 }

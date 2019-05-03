@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cave.cs" />
+    <Compile Include="HighScore.cs" />
     <Compile Include="HighScoreManager.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Player.cs" />
