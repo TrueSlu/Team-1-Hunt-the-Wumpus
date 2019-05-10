@@ -12,6 +12,8 @@ namespace Team1_Wumpus
         public List<int> Pits { get; set; }
         public int Player { get; set; }
         public int Wumpus { get; set; }
+        public CaveSystem Cave { get; set; }
+        public int cavenumber { get; set; }
      
         //method that initializes locations of objects
         public void InitializePosition()
@@ -57,9 +59,9 @@ namespace Team1_Wumpus
         public void BatsMove()
         {
             Random r = new Random();
-            foreach (int i = 0; i < Bats.length; i++)
+            for (int i = 0; i < Bats.Count; i++)
             {
-                if(bat == Player)
+                if(Bats[i] == Player)
                 {
                     int newPlayerPosition = r.Next(1, 31);
                     if (Player != newPlayerPosition)
@@ -67,11 +69,50 @@ namespace Team1_Wumpus
                         Player = newPlayerPosition;
                     }
 
-                    bat = r.Next(1, 31);
+                    Bats[i] = r.Next(1, 31);
                     break;
                 }
             }
         }
+
+        public void WumpusMoves()
+        {
+            int numberofmoves;
+            if(Wumpus == Player)
+            {
+                Random r = new Random();
+                numberofmoves = r.Next(1, 5);
+                for (int i = 0; i < numberofmoves; i++)
+                {
+                    int randomCave = r.Next(0, Cave.ShowOnlyConnected(cavenumber).Count);
+                    Cave.ShowOnlyConnected(cavenumber);
+                    WumpusMovement(cavenumber);
+                }
+                
+            }
+            for (int i = 0; i < Pits.Count; i++)
+            {
+                if(Wumpus == i)
+                {
+                    Random r = new Random();
+                    Pits[i] = r.Next(1,31);
+                }
+                    
+            }
+            for(int i = 0; i<Bats.Count; i++)
+            {
+                if(Wumpus == i)
+                {
+                    Random r = new Random();
+                    Bats[i] = r.Next(1, 31);
+                }
+            }
+        }
+        public void WumpusMovement(int cavenumber)
+        {
+            Wumpus = cavenumber;
+        }
         //method that returns locations of obstacles/player
+
     }
 }
