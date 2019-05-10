@@ -48,19 +48,19 @@ namespace Team1_Wumpus
         public int[] ShowAdjacents(int caveNumber)
         {
             //returns list with the adjacent caves
-            return System[caveNumber].AdjacentCaves;
+            return System[caveNumber].GetAdjacentCaves();
         }
 
         public int[] ShowConnected(int caveNumber)
         {
-            return System[caveNumber].ConnectedCaves;
+            return System[caveNumber].GetConnectedCaves();
         }
     }
     public class Cave
     {
         public int CaveNumber { get; private set; }
-        public int[] AdjacentCaves { get; private set; } = new int[6];      //not very useful
-        public int[] ConnectedCaves { get; private set; } = new int[6];
+        private int[] AdjacentCaves { get; set; } = new int[6];      //not very useful
+        private int[] ConnectedCaves { get; set; } = new int[6];
 
         //public Cave(int c, int[] ac, int[] cc)
         //{
@@ -116,6 +116,16 @@ namespace Team1_Wumpus
             {
                 return corrected;
             }
+        }
+
+        public int[] GetAdjacentCaves()
+        {
+            return AdjacentCaves;
+        }
+
+        public int[] GetConnectedCaves()
+        {
+            return ConnectedCaves;
         }
 
         public void CalculateAdjacentCaves()
