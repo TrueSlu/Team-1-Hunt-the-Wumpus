@@ -45,15 +45,29 @@ namespace Team1_Wumpus
             sr.Close();
         }
 
-        public int[] ShowAdjacents(int caveNumber)
+        public int[] GetAdjacentList(int caveNumber)
         {
             //returns list with the adjacent caves
             return System[caveNumber].GetAdjacentCaves();
         }
 
-        public int[] ShowConnected(int caveNumber)
+        public int[] GetConnectedList(int caveNumber)
         {
             return System[caveNumber].GetConnectedCaves();
+        }
+
+        public List<int> ShowOnlyConnected(int caveNumber)
+        {
+            int[] unfCaves = System[caveNumber].GetConnectedCaves();
+            List<int> connectedCaves = new List<int>();
+            for (int i = 0; i < 6; i++)
+            {
+                if (unfCaves[i] >= 1)
+                {
+                    connectedCaves.Add(unfCaves[i]);
+                }
+            }
+            return connectedCaves;
         }
     }
     public class Cave
