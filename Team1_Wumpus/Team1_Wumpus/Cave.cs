@@ -7,13 +7,22 @@ using System.Threading.Tasks;
 
 namespace Team1_Wumpus
 {
-    class CaveSystem
+    public class CaveSystem
     {
+        //format of the lists returned are 
+        //six integer list
+        //position 0 is cave directly north
+        //position 1 is cave northeast
+        //position 2 is cave southeast
+        //position 3 is cave south
+        //position 4 is cave southwest
+        //position 5 is cave northwest
+
         public Cave[] System = new Cave[31]; // System[0] is unused
 
         public CaveSystem(string fileName)
         {
-
+            ReadFile(fileName);
         }
 
         private void ReadFile(string fileName)
@@ -31,7 +40,7 @@ namespace Team1_Wumpus
                 }
                 
                 inputText = sr.ReadLine();
-                
+                System[caveNum] = new Cave(caveNum, data);
             }
             sr.Close();
         }
@@ -41,11 +50,16 @@ namespace Team1_Wumpus
             //returns list with the adjacent caves
             return System[caveNumber].AdjacentCaves;
         }
+
+        public int[] ShowConnected(int caveNumber)
+        {
+            return System[caveNumber].ConnectedCaves;
+        }
     }
-    class Cave
+    public class Cave
     {
         public int CaveNumber { get; private set; }
-        public int[] AdjacentCaves { get; private set; } = new int[6];
+        public int[] AdjacentCaves { get; private set; } = new int[6];      //not very useful
         public int[] ConnectedCaves { get; private set; } = new int[6];
 
         //public Cave(int c, int[] ac, int[] cc)
@@ -75,6 +89,18 @@ namespace Team1_Wumpus
                 CalculateAdjacentCaves();
             }
 
+        }
+
+        public Cave(int c)
+        {
+            if(c != FormatCaveNumber(c))
+            {
+                return;
+            }
+            else
+            {
+                CaveNumber = c;
+            }
         }
 
         public Cave() { }
