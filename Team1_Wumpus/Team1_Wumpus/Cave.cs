@@ -25,6 +25,11 @@ namespace Team1_Wumpus
             ReadFile(fileName);
         }
 
+        public CaveSystem()
+        {
+            MakeRandomSystem();
+        }
+
         private void ReadFile(string fileName)
         {
             StreamReader sr = new StreamReader(fileName);
@@ -44,6 +49,39 @@ namespace Team1_Wumpus
             }
             sr.Close();
         }
+
+        private void MakeRandomSystem()
+        {
+            int[] numConnections = new int[31];
+            Random r = new Random();
+            for(int i=1; i<31; i++)
+            {
+                numConnections[i] = r.Next(1, 3 + 1);
+            }
+
+            int randomCaveDirection;
+            for (int i = 1; i < 31; i++)
+            {
+                //makes list with the numbers of the directions the connections will be made
+                List<int> connectedCaveDirections = new List<int>();
+                for (int connectedCavesMade=1; connectedCavesMade<=numConnections[i];connectedCavesMade++)
+                {
+                    randomCaveDirection = r.Next(1, 7);
+                    if (connectedCaveDirections.Contains(randomCaveDirection))
+                    {
+                        connectedCavesMade--;
+                    }
+                    else
+                    {
+                        connectedCaveDirections.Add(randomCaveDirection);
+                    }
+                }
+                connectedCaveDirections.Sort();
+                numConnections[i] = r.Next(1, 3 + 1);
+            }
+        }
+
+        //methods for other classes
 
         public int[] GetAdjacentList(int caveNumber)
         {
