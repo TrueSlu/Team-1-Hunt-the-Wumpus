@@ -19,10 +19,37 @@ namespace Team1_Wumpus
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            for (int i = 0; i < 6; i++)
+            {
+                caveSystemBox.Items.Add("Cave " + i);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (nameBox.Text == "")
+            {
+                MessageBox.Show("Please enter your name to play.");
+                return;
+            }
+
+            int chosenCaveSystem = caveSystemBox.SelectedIndex;
+
+            Game gameObject = new Game(nameBox.Text, chosenCaveSystem);
+        }
+
+        private void highScores_Click(object sender, EventArgs e)
+        {
+            List<HighScore> highScores = HighScoreManager.getHighScores();
+
+        }
+
+        private void caveSystemBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
