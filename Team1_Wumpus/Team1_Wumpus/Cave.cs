@@ -108,6 +108,7 @@ namespace Team1_Wumpus
             return connectedCaves;
         }
     }
+
     public class Cave
     {
         public int CaveNumber { get; private set; }
