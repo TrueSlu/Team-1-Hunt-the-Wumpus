@@ -58,8 +58,9 @@ namespace Team1_Wumpus
         {
             Random r = new Random();
             for (int i = 0; i < Bats.Count; i++)
+            //foreach(int bat in Bats)
             {
-                if(bat == Player)
+                if(Bats[i] == Player)
                 {
                     int newPlayerPosition = r.Next(1, 31);
                     if (Player != newPlayerPosition)
@@ -67,7 +68,7 @@ namespace Team1_Wumpus
                         Player = newPlayerPosition;
                     }
 
-                    bat = r.Next(1, 31);
+                    Bats[i] = r.Next(1, 31);
                     break;
                 }
             }
