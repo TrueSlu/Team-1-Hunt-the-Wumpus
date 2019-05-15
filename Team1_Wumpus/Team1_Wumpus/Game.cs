@@ -13,7 +13,9 @@ namespace Team1_Wumpus
         public String Name { get; set; }
         public String Player { get; private set; }
         public CaveSystem GameCave { get; set; }
-        public
+        public Trivia TriviaManager { get; set; }
+        public Location LocationManager { get; set; }
+
 
         Game(String n, int c)
         {
