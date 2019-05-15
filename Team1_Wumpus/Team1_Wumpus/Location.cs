@@ -57,7 +57,7 @@ namespace Team1_Wumpus
         public void BatsMove()
         {
             Random r = new Random();
-            foreach (int i = 0; i < Bats.length; i++)
+            for (int i = 0; i < Bats.Count; i++)
             {
                 if(bat == Player)
                 {
