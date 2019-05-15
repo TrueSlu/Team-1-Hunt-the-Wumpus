@@ -33,7 +33,7 @@
             this.highScores = new System.Windows.Forms.Button();
             this.nameBox = new System.Windows.Forms.TextBox();
             this.nameLabel = new System.Windows.Forms.Label();
-            this.caveSystem = new System.Windows.Forms.ListBox();
+            this.caveSystemBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // label1
@@ -81,20 +81,20 @@
             this.nameLabel.TabIndex = 4;
             this.nameLabel.Text = "Name";
             // 
-            // caveSystem
+            // caveSystemBox
             // 
-            this.caveSystem.FormattingEnabled = true;
-            this.caveSystem.Location = new System.Drawing.Point(320, 132);
-            this.caveSystem.Name = "caveSystem";
-            this.caveSystem.Size = new System.Drawing.Size(161, 95);
-            this.caveSystem.TabIndex = 5;
+            this.caveSystemBox.FormattingEnabled = true;
+            this.caveSystemBox.Location = new System.Drawing.Point(320, 132);
+            this.caveSystemBox.Name = "caveSystemBox";
+            this.caveSystemBox.Size = new System.Drawing.Size(161, 95);
+            this.caveSystemBox.TabIndex = 5;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.caveSystem);
+            this.Controls.Add(this.caveSystemBox);
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.nameBox);
             this.Controls.Add(this.highScores);
@@ -115,7 +115,7 @@
         private System.Windows.Forms.Button highScores;
         private System.Windows.Forms.TextBox nameBox;
         private System.Windows.Forms.Label nameLabel;
-        private System.Windows.Forms.ListBox caveSystem;
+        private System.Windows.Forms.ListBox caveSystemBox;
     }
 }
 

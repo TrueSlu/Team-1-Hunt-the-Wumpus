@@ -9,14 +9,17 @@ namespace Team1_Wumpus
     public class Game
     {
 
-        public String CaveSystem { get; set; }
+        public int CaveNumber { get; set; }
         public String Name { get; set; }
-        public Game(String c, String n)
+        public String Player { get; private set; }
+        public CaveSystem GameCave { get; set; }
+        public
+
+        Game(String n, int c)
         {
-            Cave.initializeCave(c);
 
             Name = n;
-            CaveSystem = c;
+            CaveNumber = c;
 
 
 

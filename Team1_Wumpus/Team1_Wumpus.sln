@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Team1_Wumpus", "Team1_Wumpu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayerTests", "PlayerTests\PlayerTests.csproj", "{7ED6B8D4-EC09-49E8-989D-27B1C9E1D362}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaveTests", "CaveTests\CaveTests.csproj", "{77A65935-6745-4510-8249-6583ECC2A21F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CaveTests", "CaveTests\CaveTests.csproj", "{77A65935-6745-4510-8249-6583ECC2A21F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,15 +16,12 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{31143B42-96C9-41A5-B817-CCE9F90FBCFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{31143B42-96C9-41A5-B817-CCE9F90FBCFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31143B42-96C9-41A5-B817-CCE9F90FBCFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31143B42-96C9-41A5-B817-CCE9F90FBCFC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7ED6B8D4-EC09-49E8-989D-27B1C9E1D362}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7ED6B8D4-EC09-49E8-989D-27B1C9E1D362}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7ED6B8D4-EC09-49E8-989D-27B1C9E1D362}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7ED6B8D4-EC09-49E8-989D-27B1C9E1D362}.Release|Any CPU.Build.0 = Release|Any CPU
 		{77A65935-6745-4510-8249-6583ECC2A21F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{77A65935-6745-4510-8249-6583ECC2A21F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77A65935-6745-4510-8249-6583ECC2A21F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77A65935-6745-4510-8249-6583ECC2A21F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
