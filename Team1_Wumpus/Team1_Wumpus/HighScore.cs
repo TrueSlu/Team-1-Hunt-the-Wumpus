@@ -8,17 +8,26 @@ namespace Team1_Wumpus
 {
     public class HighScore
     {
+        public string Name { get; private set; }
 
-        //class for the HighScoreManager to create new instantiations of
-        public int Score { get; set; }
-        public String Name { get; set; }
+        public string Cave { get; private set; }
 
-        HighScore(int s, String n)
+        public int Score { get; private set; }
+
+        public HighScore(string n, string c, int s)
         {
-            Score = s;
             Name = n;
+            Cave = c;
+            Score = s;
         }
 
+        public HighScore() { }
 
+        public override string ToString()
+        {
+            return "Name: " + Name + Environment.NewLine +
+                "     Cave: " + Cave + Environment.NewLine +
+                "     Score: " + Score + Environment.NewLine;
+        }
     }
 }

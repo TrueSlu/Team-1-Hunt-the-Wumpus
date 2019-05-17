@@ -6,14 +6,29 @@ using System.Threading.Tasks;
 
 namespace Team1_Wumpus
 {
-    class HighScoreManager
+    public class HighScoreManager
     {
-        //have a method to read high scores from a file, return list of "Score" objects to game control to display to UI
+        List<HighScore> scores = new List<HighScore>();
 
-        //have a method to write to file a new Score Object
+        public void AddNewHighScore(HighScore hs)
+        {
+            scores.Add(hs);
+        }
 
-        //have a method to retrieve highest score
+        public double GetScore(int index)
+        {
+            return scores[index].Score;
+        }
 
-        //have a method to check if a score given is high score
+        public List<HighScore> GetHighScores()
+        {
+            List<HighScore> score = new List<HighScore>();
+            foreach (HighScore hs in scores)
+            {
+                scores.Add(hs);
+            }
+
+            return score;
+        }
     }
 }

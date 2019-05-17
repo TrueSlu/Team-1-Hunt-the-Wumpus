@@ -10,36 +10,53 @@ using System.Windows.Forms;
 
 namespace Team1_Wumpus
 {
-    public partial class HighScoreForm : Form
+    public partial class FormHighScore : Form
     {
-        public HighScoreForm()
+        Random rnd = new Random();
+
+        List<HighScore> scores = new List<HighScore>();
+        public FormHighScore()
         {
             InitializeComponent();
         }
 
-        public List<HighScore> HighScores { get; set; }
-
-        private void HighScoreForm_Load(object sender, EventArgs e)
+        private void listBoxOrders_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach (HighScore scoreObject in HighScores)
-            {
-                highScoresBox.Items.Add(scoreObject.Score);
-            }
+            HighScore s = scores[listBoxScores.SelectedIndex];
+
+            textBoxName.Text = s.Name;
+            textBoxCave.Text = s.Cave;
+            textBoxScore.Text = s.Score.ToString();
+
+
         }
 
-        private void highScoresBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void UpdateListBox()
         {
-            try
+            listBoxScores.Items.Clear();
+            foreach (HighScore s in scores)
             {
-                HighScore selectedScore = HighScores[highScoresBox.SelectedIndex];
-
-                nameBox.Text = selectedScore.Name;
-                caveBox.Text = selectedScore.Cave.ToString();
-                scoreBox.Text = selectedScore.Score.ToString();
+                listBoxScores.Items.Add(s);
             }
-            catch
+
+        }
+
+        private void buttonDisplay_Click(object sender, EventArgs e)
+        {
+            String name = textBoxName.Text;
+            String cave = textBoxCave.Text;
+            int score = int.Parse(textBoxScore.Text);
+
+            HighScore hs = new HighScore(name, cave, score);
+
+            scores.Add(hs);
+
+            scores = scores.OrderByDescending(x => x.Score).ToList();
+            UpdateListBox();
+
+            if (listBoxScores.Items.Count > 10)
             {
-                MessageBox.Show("Please select a valid High Score from the list box.");
+                listBoxScores.Items.Remove(scores[10]);
             }
         }
     }
