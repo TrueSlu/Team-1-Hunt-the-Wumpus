@@ -15,9 +15,11 @@ namespace CaveTests
         }
 
         [TestMethod]
-        public void MyTestMethod()
+        public void TestAllConnections()
         {
+            var caveSys = new CaveSystem();
 
+            caveSys.WriteFile("allConnected");
         }
     }
 
