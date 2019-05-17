@@ -19,12 +19,18 @@ namespace Team1_Wumpus
             InitializeComponent();
         }
 
+        private void ReinitializePlayerInfoBox()
+        {
+            playerInfoNameBox.Text = GameObject.Name;
+            playerInfoCoinsBox.Text = GameObject.PlayerManager.GoldCoins.ToString();
+            playerInfoArrowsBox.Text = GameObject.PlayerManager.Arrows.ToString();
+            playerInfoTurnsBox.Text = GameObject.PlayerManager.TurnsTaken.ToString();
+            playerInfoScoreBox.Text = GameObject.PlayerManager.Score.ToString();
+        }
+
         private void GameForm_Load(object sender, EventArgs e)
         {
-            while (true)
-            {
-                MessageBox.Show("Hi");
-            }
         }
+
     }
 }
