@@ -13,7 +13,8 @@ namespace Team1_Wumpus
         public int Player { get; set; }
         public int Wumpus { get; set; }
         public CaveSystem Cave { get; set; }
-        public int cavenumber { get; set; }
+        public int Cavenumber { get; set; }
+        public List<int> ConnectedCaves { get; set; }
      
         //method that initializes locations of objects
         public void InitializePosition()
@@ -55,7 +56,8 @@ namespace Team1_Wumpus
             Pits[0] = pit1;
             Pits[1] = pit2;
         }
-        //method that moves objects (ability to move, no need to implement logic from spec)... i.e. if player moves triggers wumpus move, just have a method for player move and one for wumpus move
+        //method that moves objects (ability to move, no need to implement logic from spec)... i.e. if player moves triggers wumpus move, 
+        //just have a method for player move and one for wumpus move
         public void BatsMove()
         {
             Random r = new Random();
@@ -75,6 +77,27 @@ namespace Team1_Wumpus
             }
         }
 
+        public void PitsMove()
+        {
+            Random r = new Random();
+            for (int i = 0; i < Pits.Count; i++)
+            {
+                if(Pits[i] == Player)
+                {
+                    int newPlayerPosition = r.Next(1, 31);
+                    if (Player != newPlayerPosition)
+                    {
+                        Player = newPlayerPosition;
+                    }
+
+                    Pits[i] = r.Next(1, 31);
+                    break;
+
+                }
+
+            }
+        }
+
         public void WumpusMoves()
         {
             int numberofmoves;
@@ -84,9 +107,9 @@ namespace Team1_Wumpus
                 numberofmoves = r.Next(1, 5);
                 for (int i = 0; i < numberofmoves; i++)
                 {
-                    int randomCave = r.Next(0, Cave.ShowOnlyConnected(cavenumber).Count);
-                    Cave.ShowOnlyConnected(cavenumber);
-                    WumpusMovement(cavenumber);
+                    int randomCave = r.Next(0, Cave.ShowOnlyConnected(Cavenumber).Count);
+                    Cave.ShowOnlyConnected(Cavenumber);
+                    WumpusMovement(Cavenumber);
                 }
                 
             }
@@ -112,7 +135,31 @@ namespace Team1_Wumpus
         {
             Wumpus = cavenumber;
         }
-        //method that returns locations of obstacles/player
 
+        public void PlayerMovement(int desiredcave)
+        {
+            //if wanted cave's number is avaliable then allow movement to that cave
+            int checkForMovement = 0;
+            foreach (int availableCave in ConnectedCaves)
+            {
+                if (desiredcave == availableCave)
+                {
+                    //allow movement to the cave
+                    Player = desiredcave;
+                    checkForMovement++;
+                }
+           
+            }
+
+            if (checkForMovement < 1)
+            {
+                return;
+            }
+
+            ConnectedCaves = Cave.ShowOnlyConnected(Cavenumber);
+        }
+
+        
+        //method that returns locations of obstacles/player
     }
 }
