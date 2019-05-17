@@ -13,7 +13,11 @@ namespace CaveTests
             var cave = new Cave(1);
             Assert.AreEqual(1, cave.CaveNumber);
         }
+    }
 
+    [TestClass]
+    public class CaveMethodTests
+    {
         [TestMethod]
         public void TestAllConnections()
         {
@@ -21,12 +25,6 @@ namespace CaveTests
 
             caveSys.WriteFile("allConnected");
         }
-    }
-
-    [TestClass]
-    public class CaveMethodTests
-    {
-
     }
 }
 
