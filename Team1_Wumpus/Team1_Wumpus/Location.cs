@@ -84,8 +84,8 @@ namespace Team1_Wumpus
                 numberofmoves = r.Next(1, 5);
                 for (int i = 0; i < numberofmoves; i++)
                 {
-                    int randomCave = r.Next(0, Cave.ShowOnlyConnected(cavenumber).Count);
-                    Cave.ShowOnlyConnected(cavenumber);
+                    int randomCave = r.Next(0, Cave.GetConnectedList(cavenumber).Count);
+                    Cave.GetConnectedList(cavenumber);
                     WumpusMovement(cavenumber);
                 }
                 

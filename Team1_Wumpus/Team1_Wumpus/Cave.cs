@@ -25,10 +25,7 @@ namespace Team1_Wumpus
             ReadFile(fileName);
         }
 
-        public CaveSystem()
-        {
-            MakeRandomSystem();
-        }
+        public CaveSystem(){}
 
         private void ReadFile(string fileName)
         {
@@ -50,51 +47,74 @@ namespace Team1_Wumpus
             sr.Close();
         }
 
-        private void MakeRandomSystem()
+        public void WriteFile(string fileName)
         {
-            int[] numConnections = new int[31];
-            Random r = new Random();
-            for(int i=1; i<31; i++)
+            StreamWriter fout = new StreamWriter(fileName);
+            for(int i = 1; i<=30;i++)
             {
-                numConnections[i] = r.Next(1, 3 + 1);
-            }
+                string lineOutputToFile = i.ToString() + ",";
+                Cave thisCave = new Cave(i);
+                int[] thisCaveAdjacents = thisCave.GetAdjacentCaves();
 
-            int randomCaveDirection;
-            for (int i = 1; i < 31; i++)
-            {
-                //makes list with the numbers of the directions the connections will be made
-                List<int> connectedCaveDirections = new List<int>();
-                for (int connectedCavesMade=1; connectedCavesMade<=numConnections[i];connectedCavesMade++)
+                for(int j = 0; j<6;j++)
                 {
-                    randomCaveDirection = r.Next(1, 7);
-                    if (connectedCaveDirections.Contains(randomCaveDirection))
+                    if (j==6)
                     {
-                        connectedCavesMade--;
+                        lineOutputToFile += thisCaveAdjacents[j];
                     }
                     else
                     {
-                        connectedCaveDirections.Add(randomCaveDirection);
+                        lineOutputToFile += thisCaveAdjacents[j] + ",";
                     }
                 }
-                connectedCaveDirections.Sort();
-                numConnections[i] = r.Next(1, 3 + 1);
             }
         }
 
+        //private void MakeRandomSystem()
+        //{
+        //    int[] numConnections = new int[31];
+        //    Random r = new Random();
+        //    for(int i=1; i<31; i++)
+        //    {
+        //        numConnections[i] = r.Next(1, 3 + 1);
+        //    }
+
+        //    int randomCaveDirection;
+        //    for (int i = 1; i < 31; i++)
+        //    {
+        //        //makes list with the numbers of the directions the connections will be made
+        //        List<int> connectedCaveDirections = new List<int>();
+        //        for (int connectedCavesMade=1; connectedCavesMade<=numConnections[i];connectedCavesMade++)
+        //        {
+        //            randomCaveDirection = r.Next(1, 7);
+        //            if (connectedCaveDirections.Contains(randomCaveDirection))
+        //            {
+        //                connectedCavesMade--;
+        //            }
+        //            else
+        //            {
+        //                connectedCaveDirections.Add(randomCaveDirection);
+        //            }
+        //        }
+        //        connectedCaveDirections.Sort();
+        //        numConnections[i] = r.Next(1, 3 + 1);
+        //    }
+        //}
+
         //methods for other classes
 
-        public int[] GetAdjacentList(int caveNumber)
+        public int[] GetAdjacentArray(int caveNumber)
         {
             //returns list with the adjacent caves
             return System[caveNumber].GetAdjacentCaves();
         }
 
-        public int[] GetConnectedList(int caveNumber)
+        public int[] GetConnectedArray(int caveNumber)
         {
             return System[caveNumber].GetConnectedCaves();
         }
 
-        public List<int> ShowOnlyConnected(int caveNumber)
+        public List<int> GetConnectedList(int caveNumber)
         {
             int[] unfCaves = System[caveNumber].GetConnectedCaves();
             List<int> connectedCaves = new List<int>();
