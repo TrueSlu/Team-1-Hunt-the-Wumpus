@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace Team1_Wumpus
 {
+
+
     public class Sound
     {
-        //if ( bat hazard is triggered )
-            //{
-                /*
-                  
-                  
-                  
-                 */
-            //}
-    }
+        
+
+
+        
+
+    }    
 }

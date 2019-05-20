@@ -11,6 +11,7 @@ namespace Team1_Wumpus
         //current state of wumpus 
         public String State { get; set; }
 
+        
 
         public LazyWumpus() { }
 
@@ -18,7 +19,11 @@ namespace Team1_Wumpus
         {
             State = s;
         }
-
+        public bool WumpusSleeping()
+        {
+           
+        }
+        
         
 
         
