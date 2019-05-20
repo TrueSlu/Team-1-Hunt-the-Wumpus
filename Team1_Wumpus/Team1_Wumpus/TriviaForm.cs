@@ -56,59 +56,45 @@ namespace Team1_Wumpus
 
         private void checkAnswer()
         {
-            labelCorrectIncorrect.Visible = true;
-            if (index == 1)
+            if (noButtonChecked.Checked)
             {
-                if (buttonAnswer1.Checked)
-                {
-                    labelCorrectIncorrect.Text = "Correct";                }
-                else
-                {
-                    labelCorrectIncorrect.Text = "Incorrect";
-                }
+                MessageBox.Show("Please select an answer", "Error");
             }
-            if(index == 2)
+            else
             {
-                if (buttonAnswer2.Checked)
+                labelCorrectIncorrect.Visible = true;
+                if (index == 0 || index == 4 || index == 11 || index == 13)
                 {
-                    labelCorrectIncorrect.Text = "Correct";
+                    if (buttonAnswer1.Checked)
+                    {
+                        labelCorrectIncorrect.Text = "Correct";
+                    }
+                    else
+                    {
+                        labelCorrectIncorrect.Text = "Incorrect";
+                    }
                 }
-                else
+                else if (index == 1 || index == 6 || index == 8 || index == 13)
                 {
-                    labelCorrectIncorrect.Text = "Incorrect";
+                    if (buttonAnswer2.Checked)
+                    {
+                        labelCorrectIncorrect.Text = "Correct";
+                    }
+                    else
+                    {
+                        labelCorrectIncorrect.Text = "Incorrect";
+                    }
                 }
-            }
-            else if(index == 3)
-            {
-                if (buttonAnswer3.Checked)
+                else if (index == 2 || index == 3 || index == 5 || index == 7 || index == 9 || index == 10 || index == 14)
                 {
-                    labelCorrectIncorrect.Text = "Correct";
-                }
-                else
-                {
-                    labelCorrectIncorrect.Text = "Incorrect";
-                }
-            }
-            else if(index == 4)
-            {
-                if (buttonAnswer3.Checked)
-                {
-                    labelCorrectIncorrect.Text = "Correct";
-                }
-                else
-                {
-                    labelCorrectIncorrect.Text = "Incorrect";
-                }
-            }
-            else if(index == 5)
-            {
-                if (buttonAnswer1.Checked)
-                {
-                    labelCorrectIncorrect.Text = "Correct";
-                }
-                else
-                {
-                    labelCorrectIncorrect.Text = "Incorrect";
+                    if (buttonAnswer3.Checked)
+                    {
+                        labelCorrectIncorrect.Text = "Correct";
+                    }
+                    else
+                    {
+                        labelCorrectIncorrect.Text = "Incorrect";
+                    }
                 }
             }
         }
