@@ -25,12 +25,7 @@ namespace Team1_Wumpus
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
+        private void Start_Game_Button(object sender, EventArgs e)
         {
             if (nameBox.Text == "")
             {
@@ -41,15 +36,16 @@ namespace Team1_Wumpus
             int chosenCaveSystem = caveSystemBox.SelectedIndex;
 
             Game gameObject = new Game(nameBox.Text, chosenCaveSystem);
+            this.Close();
         }
 
-        private void highScores_Click(object sender, EventArgs e)
+        private void Show_High_Scores_Button(object sender, EventArgs e)
         {
-            List<HighScore> highScores = HighScoreManager.getHighScores();
+            //List<HighScore> highScores = HighScoreManager.getHighScores();
 
         }
 
-        private void caveSystemBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void Cave_Box_Change(object sender, EventArgs e)
         {
 
         }

@@ -12,6 +12,9 @@ namespace Team1_Wumpus
         public List<int> Pits { get; set; }
         public int Player { get; set; }
         public int Wumpus { get; set; }
+        public CaveSystem Cave { get; set; }
+        public int Cavenumber { get; set; }
+        public List<int> ConnectedCaves { get; set; }
      
         //method that initializes locations of objects
         public void InitializePosition()
@@ -53,13 +56,14 @@ namespace Team1_Wumpus
             Pits[0] = pit1;
             Pits[1] = pit2;
         }
-        //method that moves objects (ability to move, no need to implement logic from spec)... i.e. if player moves triggers wumpus move, just have a method for player move and one for wumpus move
+        //method that moves objects (ability to move, no need to implement logic from spec)... i.e. if player moves triggers wumpus move, 
+        //just have a method for player move and one for wumpus move
         public void BatsMove()
         {
             Random r = new Random();
-            foreach (int i = 0; i < Bats.length; i++)
+            for (int i = 0; i < Bats.Count; i++)
             {
-                if(bat == Player)
+                if(Bats[i] == Player)
                 {
                     int newPlayerPosition = r.Next(1, 31);
                     if (Player != newPlayerPosition)
@@ -67,11 +71,95 @@ namespace Team1_Wumpus
                         Player = newPlayerPosition;
                     }
 
-                    bat = r.Next(1, 31);
+                    Bats[i] = r.Next(1, 31);
                     break;
                 }
             }
         }
+
+        public void PitsMove()
+        {
+            Random r = new Random();
+            for (int i = 0; i < Pits.Count; i++)
+            {
+                if(Pits[i] == Player)
+                {
+                    int newPlayerPosition = r.Next(1, 31);
+                    if (Player != newPlayerPosition)
+                    {
+                        Player = newPlayerPosition;
+                    }
+
+                    Pits[i] = r.Next(1, 31);
+                    break;
+
+                }
+
+            }
+        }
+
+        public void WumpusMoves()
+        {
+            int numberofmoves;
+            if(Wumpus == Player)
+            {
+                Random r = new Random();
+                numberofmoves = r.Next(1, 5);
+                for (int i = 0; i < numberofmoves; i++)
+                {
+                    int randomCave = r.Next(0, Cave.ShowOnlyConnected(Cavenumber).Count);
+                    Cave.ShowOnlyConnected(Cavenumber);
+                    WumpusMovement(Cavenumber);
+                }
+                
+            }
+            for (int i = 0; i < Pits.Count; i++)
+            {
+                if(Wumpus == i)
+                {
+                    Random r = new Random();
+                    Pits[i] = r.Next(1,31);
+                }
+                    
+            }
+            for(int i = 0; i<Bats.Count; i++)
+            {
+                if(Wumpus == i)
+                {
+                    Random r = new Random();
+                    Bats[i] = r.Next(1, 31);
+                }
+            }
+        }
+        public void WumpusMovement(int cavenumber)
+        {
+            Wumpus = cavenumber;
+        }
+
+        public void PlayerMovement(int desiredcave)
+        {
+            //if wanted cave's number is avaliable then allow movement to that cave
+            int checkForMovement = 0;
+            foreach (int availableCave in ConnectedCaves)
+            {
+                if (desiredcave == availableCave)
+                {
+                    //allow movement to the cave
+                    Player = desiredcave;
+                    checkForMovement++;
+                }
+           
+            }
+
+            if (checkForMovement < 1)
+            {
+                return;
+            }
+
+            ConnectedCaves = Cave.ShowOnlyConnected(Cavenumber);
+        }
+
+        
         //method that returns locations of obstacles/player
     }
 }

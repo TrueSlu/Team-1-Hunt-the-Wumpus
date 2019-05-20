@@ -53,7 +53,7 @@
             this.startGame.TabIndex = 1;
             this.startGame.Text = "Start Game";
             this.startGame.UseVisualStyleBackColor = true;
-            this.startGame.Click += new System.EventHandler(this.button1_Click_1);
+            this.startGame.Click += new System.EventHandler(this.Start_Game_Button);
             // 
             // highScores
             // 
@@ -63,7 +63,7 @@
             this.highScores.TabIndex = 2;
             this.highScores.Text = "View High Scores";
             this.highScores.UseVisualStyleBackColor = true;
-            this.highScores.Click += new System.EventHandler(this.highScores_Click);
+            this.highScores.Click += new System.EventHandler(this.Show_High_Scores_Button);
             // 
             // nameBox
             // 
