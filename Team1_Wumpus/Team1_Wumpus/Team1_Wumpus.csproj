@@ -61,6 +61,7 @@
       <DependentUpon>HighScoreForm.cs</DependentUpon>
     </Compile>
     <Compile Include="HighScoreManager.cs" />
+    <Compile Include="LazyWumpus.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Form1.cs">
