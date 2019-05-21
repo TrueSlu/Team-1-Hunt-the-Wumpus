@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace Team1_Wumpus
 {
+
+
     public class Sound
     {
-        //hi zander please sound
-    }
+        
+
+
+        
+
+    }    
 }
