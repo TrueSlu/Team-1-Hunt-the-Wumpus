@@ -33,18 +33,21 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.playerInfoBox = new System.Windows.Forms.GroupBox();
-            this.playerInfoCoinsBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.playerInfoNameBox = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.playerInfoArrowsBox = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.playerInfoTurnsBox = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.playerInfoScoreBox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.playerInfoTurnsBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.playerInfoArrowsBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.playerInfoNameBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.playerInfoCoinsBox = new System.Windows.Forms.TextBox();
             this.availableCaveMoves = new System.Windows.Forms.ListBox();
             this.movementBox = new System.Windows.Forms.GroupBox();
             this.shopBox = new System.Windows.Forms.GroupBox();
+            this.buySecret = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.roomNumber = new System.Windows.Forms.TextBox();
             this.playerInfoBox.SuspendLayout();
             this.movementBox.SuspendLayout();
             this.shopBox.SuspendLayout();
@@ -105,64 +108,13 @@
             this.playerInfoBox.TabStop = false;
             this.playerInfoBox.Text = "Player Info";
             // 
-            // playerInfoCoinsBox
+            // playerInfoScoreBox
             // 
-            this.playerInfoCoinsBox.Enabled = false;
-            this.playerInfoCoinsBox.Location = new System.Drawing.Point(87, 50);
-            this.playerInfoCoinsBox.Name = "playerInfoCoinsBox";
-            this.playerInfoCoinsBox.Size = new System.Drawing.Size(100, 20);
-            this.playerInfoCoinsBox.TabIndex = 5;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 27);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Name";
-            // 
-            // playerInfoNameBox
-            // 
-            this.playerInfoNameBox.Enabled = false;
-            this.playerInfoNameBox.Location = new System.Drawing.Point(87, 24);
-            this.playerInfoNameBox.Name = "playerInfoNameBox";
-            this.playerInfoNameBox.Size = new System.Drawing.Size(100, 20);
-            this.playerInfoNameBox.TabIndex = 7;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 81);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Arrows";
-            // 
-            // playerInfoArrowsBox
-            // 
-            this.playerInfoArrowsBox.Enabled = false;
-            this.playerInfoArrowsBox.Location = new System.Drawing.Point(87, 78);
-            this.playerInfoArrowsBox.Name = "playerInfoArrowsBox";
-            this.playerInfoArrowsBox.Size = new System.Drawing.Size(100, 20);
-            this.playerInfoArrowsBox.TabIndex = 9;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 107);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Turns Taken";
-            // 
-            // playerInfoTurnsBox
-            // 
-            this.playerInfoTurnsBox.Enabled = false;
-            this.playerInfoTurnsBox.Location = new System.Drawing.Point(87, 104);
-            this.playerInfoTurnsBox.Name = "playerInfoTurnsBox";
-            this.playerInfoTurnsBox.Size = new System.Drawing.Size(100, 20);
-            this.playerInfoTurnsBox.TabIndex = 11;
+            this.playerInfoScoreBox.Enabled = false;
+            this.playerInfoScoreBox.Location = new System.Drawing.Point(87, 130);
+            this.playerInfoScoreBox.Name = "playerInfoScoreBox";
+            this.playerInfoScoreBox.Size = new System.Drawing.Size(100, 20);
+            this.playerInfoScoreBox.TabIndex = 13;
             // 
             // label5
             // 
@@ -173,13 +125,64 @@
             this.label5.TabIndex = 12;
             this.label5.Text = "Score";
             // 
-            // playerInfoScoreBox
+            // playerInfoTurnsBox
             // 
-            this.playerInfoScoreBox.Enabled = false;
-            this.playerInfoScoreBox.Location = new System.Drawing.Point(87, 130);
-            this.playerInfoScoreBox.Name = "playerInfoScoreBox";
-            this.playerInfoScoreBox.Size = new System.Drawing.Size(100, 20);
-            this.playerInfoScoreBox.TabIndex = 13;
+            this.playerInfoTurnsBox.Enabled = false;
+            this.playerInfoTurnsBox.Location = new System.Drawing.Point(87, 104);
+            this.playerInfoTurnsBox.Name = "playerInfoTurnsBox";
+            this.playerInfoTurnsBox.Size = new System.Drawing.Size(100, 20);
+            this.playerInfoTurnsBox.TabIndex = 11;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 107);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Turns Taken";
+            // 
+            // playerInfoArrowsBox
+            // 
+            this.playerInfoArrowsBox.Enabled = false;
+            this.playerInfoArrowsBox.Location = new System.Drawing.Point(87, 78);
+            this.playerInfoArrowsBox.Name = "playerInfoArrowsBox";
+            this.playerInfoArrowsBox.Size = new System.Drawing.Size(100, 20);
+            this.playerInfoArrowsBox.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 81);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(39, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Arrows";
+            // 
+            // playerInfoNameBox
+            // 
+            this.playerInfoNameBox.Enabled = false;
+            this.playerInfoNameBox.Location = new System.Drawing.Point(87, 24);
+            this.playerInfoNameBox.Name = "playerInfoNameBox";
+            this.playerInfoNameBox.Size = new System.Drawing.Size(100, 20);
+            this.playerInfoNameBox.TabIndex = 7;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Name";
+            // 
+            // playerInfoCoinsBox
+            // 
+            this.playerInfoCoinsBox.Enabled = false;
+            this.playerInfoCoinsBox.Location = new System.Drawing.Point(87, 50);
+            this.playerInfoCoinsBox.Name = "playerInfoCoinsBox";
+            this.playerInfoCoinsBox.Size = new System.Drawing.Size(100, 20);
+            this.playerInfoCoinsBox.TabIndex = 5;
             // 
             // availableCaveMoves
             // 
@@ -194,28 +197,56 @@
             this.movementBox.Controls.Add(this.availableCaveMoves);
             this.movementBox.Controls.Add(this.button3);
             this.movementBox.Controls.Add(this.button2);
-            this.movementBox.Location = new System.Drawing.Point(243, 12);
+            this.movementBox.Location = new System.Drawing.Point(218, 12);
             this.movementBox.Name = "movementBox";
-            this.movementBox.Size = new System.Drawing.Size(270, 164);
+            this.movementBox.Size = new System.Drawing.Size(227, 164);
             this.movementBox.TabIndex = 6;
             this.movementBox.TabStop = false;
             this.movementBox.Text = "Hunt! (The Wumpus)";
             // 
             // shopBox
             // 
+            this.shopBox.Controls.Add(this.buySecret);
             this.shopBox.Controls.Add(this.button1);
-            this.shopBox.Location = new System.Drawing.Point(562, 12);
+            this.shopBox.Location = new System.Drawing.Point(451, 12);
             this.shopBox.Name = "shopBox";
-            this.shopBox.Size = new System.Drawing.Size(210, 164);
+            this.shopBox.Size = new System.Drawing.Size(112, 164);
             this.shopBox.TabIndex = 0;
             this.shopBox.TabStop = false;
             this.shopBox.Text = "Shop";
+            // 
+            // buySecret
+            // 
+            this.buySecret.Location = new System.Drawing.Point(19, 84);
+            this.buySecret.Name = "buySecret";
+            this.buySecret.Size = new System.Drawing.Size(75, 58);
+            this.buySecret.TabIndex = 1;
+            this.buySecret.Text = "Buy Secret";
+            this.buySecret.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(135, 218);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(78, 13);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "Room Number:";
+            // 
+            // roomNumber
+            // 
+            this.roomNumber.Location = new System.Drawing.Point(233, 218);
+            this.roomNumber.Name = "roomNumber";
+            this.roomNumber.Size = new System.Drawing.Size(100, 20);
+            this.roomNumber.TabIndex = 8;
             // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(570, 288);
+            this.Controls.Add(this.roomNumber);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.shopBox);
             this.Controls.Add(this.movementBox);
             this.Controls.Add(this.playerInfoBox);
@@ -227,6 +258,7 @@
             this.movementBox.ResumeLayout(false);
             this.shopBox.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -249,5 +281,8 @@
         private System.Windows.Forms.ListBox availableCaveMoves;
         private System.Windows.Forms.GroupBox movementBox;
         private System.Windows.Forms.GroupBox shopBox;
+        private System.Windows.Forms.Button buySecret;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox roomNumber;
     }
 }
