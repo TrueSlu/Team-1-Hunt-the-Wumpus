@@ -15,13 +15,9 @@ namespace Team1_Wumpus
 
         public LazyWumpus() { }
 
-        public LazyWumpus(String s )
+        public LazyWumpus(String s)
         {
             State = s;
-        }
-        public bool WumpusSleeping()
-        {
-           
         }
         
         

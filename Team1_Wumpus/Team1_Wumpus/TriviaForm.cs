@@ -124,5 +124,10 @@ namespace Team1_Wumpus
                 }
             }
         }
+
+        private void TriviaForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
