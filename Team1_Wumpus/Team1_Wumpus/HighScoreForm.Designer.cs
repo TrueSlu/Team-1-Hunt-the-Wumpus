@@ -34,7 +34,6 @@
             this.textBoxCave = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
-            this.buttonDisplay = new System.Windows.Forms.Button();
             this.listBoxScores = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
@@ -86,20 +85,10 @@
             this.textBoxName.Size = new System.Drawing.Size(100, 20);
             this.textBoxName.TabIndex = 8;
             // 
-            // buttonDisplay
-            // 
-            this.buttonDisplay.Location = new System.Drawing.Point(79, 360);
-            this.buttonDisplay.Name = "buttonDisplay";
-            this.buttonDisplay.Size = new System.Drawing.Size(214, 52);
-            this.buttonDisplay.TabIndex = 14;
-            this.buttonDisplay.Text = "Display High Score";
-            this.buttonDisplay.UseVisualStyleBackColor = true;
-            this.buttonDisplay.Click += new System.EventHandler(this.buttonDisplay_Click_1);
-            // 
             // listBoxScores
             // 
             this.listBoxScores.FormattingEnabled = true;
-            this.listBoxScores.Location = new System.Drawing.Point(458, 68);
+            this.listBoxScores.Location = new System.Drawing.Point(389, 68);
             this.listBoxScores.Name = "listBoxScores";
             this.listBoxScores.Size = new System.Drawing.Size(234, 264);
             this.listBoxScores.TabIndex = 15;
@@ -111,7 +100,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.listBoxScores);
-            this.Controls.Add(this.buttonDisplay);
             this.Controls.Add(this.labelScore);
             this.Controls.Add(this.textBoxScore);
             this.Controls.Add(this.label2);
@@ -134,7 +122,6 @@
         private System.Windows.Forms.TextBox textBoxCave;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxName;
-        private System.Windows.Forms.Button buttonDisplay;
         private System.Windows.Forms.ListBox listBoxScores;
     }
 }

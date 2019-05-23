@@ -45,12 +45,13 @@ namespace Team1_Wumpus
             HighScoreManager tempHighScoreManager = new HighScoreManager();
 
             FormHighScore HighScoreForm = new FormHighScore();
-            List<HighScore> HighScores = tempHighScoreManager.GetHighScores();
+            List<HighScore> HighScores;
+
+            tempHighScoreManager.CreateSampleScore();
+
+            HighScores = tempHighScoreManager.ReadScores();
             HighScoreForm.scores = HighScores;
-
             HighScoreForm.ShowDialog();
-
-
         }
 
         private void startGame_Click(object sender, EventArgs e)

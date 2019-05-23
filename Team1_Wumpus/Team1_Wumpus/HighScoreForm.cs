@@ -61,7 +61,6 @@ namespace Team1_Wumpus
 
         private void FormHighScore_Load(object sender, EventArgs e)
         {
-            listBoxScores.Items.Add(1);
             UpdateListBox();
         }
     }
