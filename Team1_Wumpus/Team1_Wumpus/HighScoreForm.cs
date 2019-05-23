@@ -37,7 +37,7 @@ namespace Team1_Wumpus
             textBoxName.Text = s.Name;
             textBoxCave.Text = s.Cave;
             textBoxScore.Text = s.Score.ToString();
-
+            
         }
 
         private void buttonDisplay_Click_1(object sender, EventArgs e)
@@ -49,7 +49,11 @@ namespace Team1_Wumpus
             HighScore hs = new HighScore(name, cave, score);
 
             scores.Add(hs);
+        }
 
+        private void FormHighScore_Load(object sender, EventArgs e)
+        {
+            UpdateListBox();
             scores = scores.OrderByDescending(x => x.Score).ToList();
             UpdateListBox();
 
@@ -59,9 +63,17 @@ namespace Team1_Wumpus
             }
         }
 
-        private void FormHighScore_Load(object sender, EventArgs e)
+        private void SortHighScores()
         {
+            scores = scores.OrderByDescending(x => x.Score).ToList();
             UpdateListBox();
+
+            if (listBoxScores.Items.Count > 10)
+            {
+                listBoxScores.Items.Remove(scores[10]);
+            }
         }
+            
+
     }
 }
