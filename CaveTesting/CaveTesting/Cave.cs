@@ -1,12 +1,14 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace CaveTesting
 {
     public class CaveSystem
     {
+        string SEP_CHAR = "\t";
         //format of the lists returned are 
         //six integer list
         //position 0 is cave directly north
@@ -23,15 +25,22 @@ namespace CaveTesting
             ReadFile(fileName);
         }
 
-        public CaveSystem() { }
+        public CaveSystem(char mode)
+        {
+            if (mode == 'r')
+            {
+                MakeRandomSystem();
+            }
+        }
 
+        public CaveSystem() { }
         private void ReadFile(string fileName)
         {
             StreamReader sr = new StreamReader(fileName);
             string inputText = sr.ReadLine();
             while (inputText != null)
             {
-                string[] strData = inputText.Split(',');
+                string[] strData = inputText.Split(SEP_CHAR);
                 int caveNum = int.Parse(strData[0]);
                 int[] data = new int[6];
                 for (int i = 0; i < 6; i++)
@@ -51,9 +60,9 @@ namespace CaveTesting
 
             for (int i = 1; i <= 30; i++)
             {
-                string lineOutputToFile = i.ToString() + ",";
+                string lineOutputToFile = i.ToString() + SEP_CHAR;
                 Cave thisCave = new Cave(i);
-                int[] thisCaveAdjacents = thisCave.GetAdjacentCaves();
+                int[] thisCaveAdjacents = thisCave.GetConnectedCaves();
 
                 for (int j = 0; j < 6; j++)
                 {
@@ -63,7 +72,7 @@ namespace CaveTesting
                     }
                     else
                     {
-                        lineOutputToFile += thisCaveAdjacents[j] + ",";
+                        lineOutputToFile += thisCaveAdjacents[j] + SEP_CHAR;
                     }
                 }
                 fout.Write(lineOutputToFile + Environment.NewLine);
@@ -71,36 +80,56 @@ namespace CaveTesting
             fout.Close();
         }
 
-        //private void MakeRandomSystem()
-        //{
-        //    int[] numConnections = new int[31];
-        //    Random r = new Random();
-        //    for(int i=1; i<31; i++)
-        //    {
-        //        numConnections[i] = r.Next(1, 3 + 1);
-        //    }
+        private void MakeRandomSystem()
+        {
+            int[] numConnections = new int[31];
+            int[] currentConnections = new int[31];
+            Random r = new Random();
+            //assigns the number of connections each cave will have
+            for (int i = 1; i < 31; i++)
+            {
+                numConnections[i] = r.Next(1, 3 + 1);
+                currentConnections[i] = 0;
+            }
 
-        //    int randomCaveDirection;
-        //    for (int i = 1; i < 31; i++)
-        //    {
-        //        //makes list with the numbers of the directions the connections will be made
-        //        List<int> connectedCaveDirections = new List<int>();
-        //        for (int connectedCavesMade=1; connectedCavesMade<=numConnections[i];connectedCavesMade++)
-        //        {
-        //            randomCaveDirection = r.Next(1, 7);
-        //            if (connectedCaveDirections.Contains(randomCaveDirection))
-        //            {
-        //                connectedCavesMade--;
-        //            }
-        //            else
-        //            {
-        //                connectedCaveDirections.Add(randomCaveDirection);
-        //            }
-        //        }
-        //        connectedCaveDirections.Sort();
-        //        numConnections[i] = r.Next(1, 3 + 1);
-        //    }
-        //}
+            StreamWriter debug = new StreamWriter("values.txt");
+
+            int randomCaveDirection;
+            for (int caveNum = 1; caveNum < 31; caveNum++)
+            {
+                //makes list with the numbers of the directions the connections will be made
+                List<int> connectedCaveDirections = new List<int>();
+                for (int connectedCavesMade = 1; connectedCavesMade <= numConnections[caveNum]; connectedCavesMade++)
+                {
+                    randomCaveDirection = r.Next(0, 6);
+                    if (connectedCaveDirections.Contains(randomCaveDirection))
+                    {
+                        connectedCavesMade--;
+                    }
+                    else
+                    {
+                        connectedCaveDirections.Add(randomCaveDirection);
+                    }
+                }
+                connectedCaveDirections.Sort();
+
+                // debug file for caveDirs
+                numConnections[caveNum] = r.Next(1, 3 + 1);
+
+                System[caveNum] = new Cave(caveNum, connectedCaveDirections);
+
+
+                debug.WriteLine("CAVENUM: " + caveNum.ToString() + "\t" +
+                    "CONNECTIONS: " + numConnections[caveNum] + 
+                    "\t" + string.Join(",", connectedCaveDirections)  + "\n" +
+                    String.Join(",", System[caveNum].GetConnectedCaves())+ "\n");
+
+            }
+
+            debug.Close();
+            //making all connected files
+
+        }
 
         //methods for other classes
 
@@ -175,9 +204,20 @@ namespace CaveTesting
             else
             {
                 CaveNumber = c;
+                CalculateAdjacentCaves();
             }
         }
 
+        public Cave(int c,List<int> dirs)
+        {
+            CaveNumber = c;
+            CalculateAdjacentCaves();
+            ConnectedCaves = new int[] {0,0,0,0,0,0};
+            foreach (int direction in dirs)
+            {
+                ConnectedCaves[direction] = AdjacentCaves[direction];
+            }
+        }
         public Cave() { }
 
         public int FormatCaveNumber(int toFormat)
@@ -220,7 +260,7 @@ namespace CaveTesting
             int northEastCave;
             if (CaveNumber % 2 == 0 && CaveNumber % 6 != 0)
             {
-                northEastCave = CaveNumber - 1;
+                northEastCave = CaveNumber + 1;
             }
             else //if (CaveNumber % 2 == 1 || CaveNumber % 6 == 0)
             {
