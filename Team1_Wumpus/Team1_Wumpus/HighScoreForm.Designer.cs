@@ -94,6 +94,7 @@
             this.buttonDisplay.TabIndex = 14;
             this.buttonDisplay.Text = "Display High Score";
             this.buttonDisplay.UseVisualStyleBackColor = true;
+            this.buttonDisplay.Click += new System.EventHandler(this.buttonDisplay_Click_1);
             // 
             // listBoxScores
             // 
@@ -102,9 +103,9 @@
             this.listBoxScores.Name = "listBoxScores";
             this.listBoxScores.Size = new System.Drawing.Size(234, 264);
             this.listBoxScores.TabIndex = 15;
-           
+            this.listBoxScores.SelectedIndexChanged += new System.EventHandler(this.listBoxScores_SelectedIndexChanged);
             // 
-            // HighScoreForm
+            // FormHighScore
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -117,9 +118,9 @@
             this.Controls.Add(this.textBoxCave);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxName);
-            this.Name = "HighScoreForm";
+            this.Name = "FormHighScore";
             this.Text = "High Scores";
-           
+            this.Load += new System.EventHandler(this.FormHighScore_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

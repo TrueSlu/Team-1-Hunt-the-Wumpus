@@ -14,21 +14,10 @@ namespace Team1_Wumpus
     {
         Random rnd = new Random();
 
-        List<HighScore> scores = new List<HighScore>();
+        public List<HighScore> scores { get; set; }
         public FormHighScore()
         {
             InitializeComponent();
-        }
-
-        private void listBoxOrders_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            HighScore s = scores[listBoxScores.SelectedIndex];
-
-            textBoxName.Text = s.Name;
-            textBoxCave.Text = s.Cave;
-            textBoxScore.Text = s.Score.ToString();
-
-
         }
 
         private void UpdateListBox()
@@ -36,12 +25,22 @@ namespace Team1_Wumpus
             listBoxScores.Items.Clear();
             foreach (HighScore s in scores)
             {
-                listBoxScores.Items.Add(s);
+                listBoxScores.Items.Add(s.Score);
             }
 
         }
 
-        private void buttonDisplay_Click(object sender, EventArgs e)
+        private void listBoxScores_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            HighScore s = scores[listBoxScores.SelectedIndex];
+
+            textBoxName.Text = s.Name;
+            textBoxCave.Text = s.Cave;
+            textBoxScore.Text = s.Score.ToString();
+
+        }
+
+        private void buttonDisplay_Click_1(object sender, EventArgs e)
         {
             String name = textBoxName.Text;
             String cave = textBoxCave.Text;
@@ -58,6 +57,12 @@ namespace Team1_Wumpus
             {
                 listBoxScores.Items.Remove(scores[10]);
             }
+        }
+
+        private void FormHighScore_Load(object sender, EventArgs e)
+        {
+            listBoxScores.Items.Add(1);
+            UpdateListBox();
         }
     }
 }

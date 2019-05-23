@@ -15,7 +15,6 @@ namespace Team1_Wumpus
         public int Score { get; private set; }
         public bool IsWumpusDead { get; set; }
 
-
         public Player()
         {
             Arrows = 3;
