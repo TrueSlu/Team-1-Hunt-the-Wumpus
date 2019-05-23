@@ -16,6 +16,7 @@ namespace Team1_Wumpus
         public Trivia TriviaManager { get; set; }
         public Location LocationManager { get; set; }
         public Sound SoundManager { get; set; }
+        public HighScoreManager HighScoreTracker { get; set; }
 
         public Game(String n, int c)
         {
@@ -24,10 +25,13 @@ namespace Team1_Wumpus
             CaveNumber = c.ToString();
             PlayerManager = new Player();
             CaveManager = new CaveSystem(CaveNumber);
+            //TriviaManager = new TriviaManager();
+            HighScoreTracker = new HighScoreManager();
             LocationManager = new Location();
 
-            GameForm TheMainGameFormThing = new GameForm();
-            TheMainGameFormThing.GameObject = this;
+
+            GameForm GameUI = new GameForm();
+            GameUI.GameObject = this;
         }
 
         public void MakeMove()

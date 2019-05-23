@@ -24,7 +24,20 @@ namespace Team1_Wumpus
 
         private void Menu_Load(object sender, EventArgs e)
         {
+            CaveSystem tempCaveSystem = new CaveSystem();
+            //List<String> playableCaves = tempCaveSystem.getPlayableCaves();
 
+            List<string> playableCaves = new List<string>()
+            {
+                "test",
+                "test2",
+                "testcave",
+            };
+
+            foreach(string cave in playableCaves)
+            {
+                caveList.Items.Add(cave);
+            }
         }
 
         private void showHighScores_Click(object sender, EventArgs e)
@@ -38,6 +51,32 @@ namespace Team1_Wumpus
             HighScoreForm.ShowDialog();
 
 
+        }
+
+        private void startGame_Click(object sender, EventArgs e)
+        {
+            if (nameBox.Text == "")
+            {
+                MessageBox.Show("Please enter your name to play.");
+            } else if (caveList.SelectedIndex >= caveList.Items.Count && caveList.SelectedIndex < 0)
+            {
+                MessageBox.Show("Please select a cave to play.");
+            } else
+            {
+                Game GameManager = new Game(nameBox.Text, caveList.SelectedIndex);
+                this.Close();
+
+            }
+        }
+
+        private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Inglemoor High School Team1");
+        }
+
+        private void getStartedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("In the spirit of Team1, select a cave, type your name, and start Hunting the Wumpus without a tutorial or prior experience.");
         }
     }
 }
