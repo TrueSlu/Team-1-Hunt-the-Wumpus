@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Team1_Wumpus
 {
-    public partial class TriviaForm : Form
+    public partial class TriviaForm : System.Windows.Forms.Form
     {
         List<Trivia> TriviaQuestions = new List<Trivia>();
         int index = 0;

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Team1_Wumpus
 {
-    public partial class FormHighScore : Form
+    public partial class FormHighScore : System.Windows.Forms.Form
     {
         Random rnd = new Random();
 

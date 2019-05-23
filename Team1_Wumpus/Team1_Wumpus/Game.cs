@@ -15,6 +15,7 @@ namespace Team1_Wumpus
         public CaveSystem CaveManager { get; set; }
         public Trivia TriviaManager { get; set; }
         public Location LocationManager { get; set; }
+        public Sound SoundManager { get; set; }
 
 
         public Game(String n, int c)
@@ -24,7 +25,7 @@ namespace Team1_Wumpus
             CaveNumber = c.ToString();
             PlayerManager = new Player();
             CaveManager = new CaveSystem(CaveNumber);
-            TriviaManager = new Trivia();
+            TriviaManager = new TriviaManager();
             LocationManager = new Location();
 
             GameForm TheMainGameFormThing = new GameForm();
