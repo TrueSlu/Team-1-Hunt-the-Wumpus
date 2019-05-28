@@ -28,14 +28,32 @@ namespace Team1_Wumpus
             //TriviaManager = new TriviaManager();
             HighScoreTracker = new HighScoreManager();
             LocationManager = new Location();
+            SoundManager = new Sound();
 
 
             GameForm GameUI = new GameForm();
             GameUI.GameObject = this;
+            GameUI.ShowDialog();
+        }
+
+        public void InitializeGame()
+        {
+            LocationManager.InitializePosition();
         }
 
         public void MakeMove()
         {
+
+        }
+
+
+
+        public void EndGameNormally()
+        {
+            PlayerManager.CalculateScore();
+            HighScore newHighScore = new HighScore(Name, CaveNumber, PlayerManager.Score);
+            HighScoreTracker.AddNewHighScore(newHighScore);
+
 
         }
 

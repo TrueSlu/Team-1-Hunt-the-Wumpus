@@ -69,7 +69,6 @@ namespace Team1_Wumpus
             } else
             {
                 Game GameManager = new Game(nameBox.Text, caveList.Items[caveList.SelectedIndex] + ".txt");
-                this.Close();
 
             }
         }

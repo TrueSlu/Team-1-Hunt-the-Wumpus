@@ -47,6 +47,12 @@
   <ItemGroup>
     <Compile Include="Cave.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="GameEndForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GameEndForm.Designer.cs">
+      <DependentUpon>GameEndForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GameForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,9 @@
     <Compile Include="WumpuSplash.Designer.cs">
       <DependentUpon>WumpuSplash.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="GameEndForm.resx">
+      <DependentUpon>GameEndForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GameForm.resx">
       <DependentUpon>GameForm.cs</DependentUpon>
     </EmbeddedResource>
