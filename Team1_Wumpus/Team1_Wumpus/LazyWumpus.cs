@@ -19,10 +19,10 @@ namespace Team1_Wumpus
         {
             State = s;
         }
-        public bool WumpusSleeping()
-        {
+        //public bool WumpusSleeping()
+        //{
            
-        }
+        //}
         
         
 

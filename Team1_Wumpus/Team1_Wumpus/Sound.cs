@@ -10,10 +10,15 @@ namespace Team1_Wumpus
 
     public class Sound
     {
-        
+        MediaPlayer player = new MediaPlayer();
+        //soundplayer = new sound
+        public void PlayBats()
+        {
+            player.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\batschatter.wav"));
+
+            player.Play();
+        }
 
 
-        
-
-    }    
+    }
 }
