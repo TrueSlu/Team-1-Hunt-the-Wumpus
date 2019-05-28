@@ -64,17 +64,11 @@ namespace CaveTesting
                 Cave thisCave = new Cave(i);
                 int[] thisCaveAdjacents = thisCave.GetConnectedCaves();
 
-                for (int j = 0; j < 6; j++)
-                {
-                    if (j == 5)
-                    {
-                        lineOutputToFile += thisCaveAdjacents[j];
-                    }
-                    else
-                    {
-                        lineOutputToFile += thisCaveAdjacents[j] + SEP_CHAR;
-                    }
-                }
+                lineOutputToFile += String.Join(SEP_CHAR, System[i].GetConnectedCaves());
+
+                //bad code, doesn't work
+
+
                 fout.Write(lineOutputToFile + Environment.NewLine);
             }
             fout.Close();
@@ -121,8 +115,10 @@ namespace CaveTesting
 
                 debug.WriteLine("CAVENUM: " + caveNum.ToString() + "\t" +
                     "CONNECTIONS: " + numConnections[caveNum] + 
-                    "\t" + string.Join(",", connectedCaveDirections)  + "\n" +
-                    String.Join(",", System[caveNum].GetConnectedCaves())+ "\n");
+                    "\tDIRECTIONS:" + string.Join(",", connectedCaveDirections)  + "\n" +
+                    String.Join("\t", System[caveNum].GetConnectedCaves())+ "\n");
+
+                //
 
             }
 
