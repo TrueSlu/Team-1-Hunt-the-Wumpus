@@ -17,6 +17,7 @@ namespace Team1_Wumpus
         public Location LocationManager { get; set; }
         public Sound SoundManager { get; set; }
         public HighScoreManager HighScoreTracker { get; set; }
+        public GameForm GameUI { get; private set; }
 
         public Game(String n, String c)
         {
@@ -50,11 +51,15 @@ namespace Team1_Wumpus
 
         public void EndGameNormally()
         {
+            GameUI.Close();
             PlayerManager.CalculateScore();
             HighScore newHighScore = new HighScore(Name, CaveNumber, PlayerManager.Score);
             HighScoreTracker.AddNewHighScore(newHighScore);
 
-
+            GameEndForm CreditsForm = new GameEndForm();
+            CreditsForm.PlayerObject = PlayerManager;
+            CreditsForm.ShowDialog();
+            
         }
 
 

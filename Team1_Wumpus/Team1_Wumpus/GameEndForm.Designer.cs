@@ -40,6 +40,7 @@
             this.playerInfoCoinsBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.gameLabel = new System.Windows.Forms.Label();
+            this.quitButton = new System.Windows.Forms.Button();
             this.statsBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -174,18 +175,29 @@
             // 
             this.gameLabel.AutoSize = true;
             this.gameLabel.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gameLabel.Location = new System.Drawing.Point(325, 32);
+            this.gameLabel.Location = new System.Drawing.Point(340, 33);
             this.gameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.gameLabel.Name = "gameLabel";
             this.gameLabel.Size = new System.Drawing.Size(89, 20);
             this.gameLabel.TabIndex = 8;
             this.gameLabel.Text = "Game Won?";
             // 
+            // quitButton
+            // 
+            this.quitButton.Location = new System.Drawing.Point(354, 381);
+            this.quitButton.Name = "quitButton";
+            this.quitButton.Size = new System.Drawing.Size(75, 23);
+            this.quitButton.TabIndex = 14;
+            this.quitButton.Text = "Quit";
+            this.quitButton.UseVisualStyleBackColor = true;
+            this.quitButton.Click += new System.EventHandler(this.quitButton_Click);
+            // 
             // GameEndForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.quitButton);
             this.Controls.Add(this.gameLabel);
             this.Controls.Add(this.statsBox);
             this.Name = "GameEndForm";
@@ -211,5 +223,6 @@
         private System.Windows.Forms.TextBox playerInfoCoinsBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label gameLabel;
+        private System.Windows.Forms.Button quitButton;
     }
 }
