@@ -29,9 +29,12 @@ namespace Team1_Wumpus
 
             List<string> playableCaves = new List<string>()
             {
-                "test",
-                "test2",
-                "testcave",
+                "system0",
+                "system1",
+                "system2",
+                "system3",
+                "system4",
+                "system5",
             };
 
             foreach(string cave in playableCaves)
@@ -65,7 +68,7 @@ namespace Team1_Wumpus
                 MessageBox.Show("Please select a cave to play.");
             } else
             {
-                Game GameManager = new Game(nameBox.Text, caveList.SelectedIndex);
+                Game GameManager = new Game(nameBox.Text, caveList.Items[caveList.SelectedIndex] + ".txt");
                 this.Close();
 
             }

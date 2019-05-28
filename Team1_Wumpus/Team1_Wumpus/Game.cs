@@ -18,7 +18,7 @@ namespace Team1_Wumpus
         public Sound SoundManager { get; set; }
         public HighScoreManager HighScoreTracker { get; set; }
 
-        public Game(String n, int c)
+        public Game(String n, String c)
         {
 
             Name = n;
