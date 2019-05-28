@@ -47,7 +47,8 @@ namespace Team1_Wumpus
             FormHighScore HighScoreForm = new FormHighScore();
             List<HighScore> HighScores;
 
-            tempHighScoreManager.CreateSampleScore();
+            //uncomment the below to test high score manager on a new machine
+            //tempHighScoreManager.CreateSampleScore();
 
             HighScores = tempHighScoreManager.ReadScores();
             HighScoreForm.scores = HighScores;

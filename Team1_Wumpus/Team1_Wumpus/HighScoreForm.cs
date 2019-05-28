@@ -32,11 +32,17 @@ namespace Team1_Wumpus
 
         private void listBoxScores_SelectedIndexChanged(object sender, EventArgs e)
         {
-            HighScore s = scores[listBoxScores.SelectedIndex];
+            try
+            {
+                HighScore s = scores[listBoxScores.SelectedIndex];
 
-            textBoxName.Text = s.Name;
-            textBoxCave.Text = s.Cave;
-            textBoxScore.Text = s.Score.ToString();
+                textBoxName.Text = s.Name;
+                textBoxCave.Text = s.Cave;
+                textBoxScore.Text = s.Score.ToString();
+            } catch
+            {
+                
+            }
             
         }
 
