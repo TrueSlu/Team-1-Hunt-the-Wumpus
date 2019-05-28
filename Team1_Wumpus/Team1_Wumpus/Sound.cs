@@ -19,6 +19,14 @@ namespace Team1_Wumpus
             player.Play();
         }
 
+        public void background()
+        {
+            //background music
+            player.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\2019-04-18_-_The_Epic_Boss_Fight_-_David_Fesliyan.mp3"));
+            player.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\2019-05-09_-_Escape_Chase_-_David_Fesliyan.mp3"));
+            player.Play();
+
+        }
 
     }
 }
