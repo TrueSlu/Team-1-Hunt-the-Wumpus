@@ -35,6 +35,7 @@
             this.labelQuestion = new System.Windows.Forms.Label();
             this.check = new System.Windows.Forms.Button();
             this.next = new System.Windows.Forms.Button();
+            this.noButtonChecked = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // labelCorrectIncorrect
@@ -107,11 +108,23 @@
             this.next.Text = "Next Question";
             this.next.UseVisualStyleBackColor = true;
             // 
+            // noButtonChecked
+            // 
+            this.noButtonChecked.AutoSize = true;
+            this.noButtonChecked.Location = new System.Drawing.Point(403, 134);
+            this.noButtonChecked.Name = "noButtonChecked";
+            this.noButtonChecked.Size = new System.Drawing.Size(63, 17);
+            this.noButtonChecked.TabIndex = 14;
+            this.noButtonChecked.TabStop = true;
+            this.noButtonChecked.Text = "Invisible";
+            this.noButtonChecked.UseVisualStyleBackColor = true;
+            // 
             // TriviaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(551, 332);
+            this.Controls.Add(this.noButtonChecked);
             this.Controls.Add(this.labelCorrectIncorrect);
             this.Controls.Add(this.buttonAnswer3);
             this.Controls.Add(this.buttonAnswer2);
@@ -121,6 +134,7 @@
             this.Controls.Add(this.next);
             this.Name = "TriviaForm";
             this.Text = "TriviaForm";
+            this.Load += new System.EventHandler(this.TriviaForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -135,5 +149,6 @@
         private System.Windows.Forms.Label labelQuestion;
         private System.Windows.Forms.Button check;
         private System.Windows.Forms.Button next;
+        private System.Windows.Forms.RadioButton noButtonChecked;
     }
 }

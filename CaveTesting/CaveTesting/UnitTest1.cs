@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 using System.Diagnostics;
-using Team1_Wumpus;
+using CaveTesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CaveTests
@@ -44,7 +44,7 @@ namespace CaveTests
             //CollectionAssert.AreEqual(caveSys.GetConnectedArray(1), new int[] { 25, 26, 2, 7, 6, 30 });
             //CollectionAssert.AreEqual(caveSys.GetConnectedArray(2), new int[] { 26, 3, 9, 8, 7, 1 });
             StreamWriter debug = new StreamWriter("readInValues.txt");
-            for (int i = 1; i <= 30; i++)
+            for (int i = 1; i<=30;i++)
             {
                 int[] ThisArray = caveSys.GetAdjacentArray(i);
                 debug.WriteLine("Cave Num: " + i.ToString() + String.Join(",", ThisArray));
@@ -56,7 +56,7 @@ namespace CaveTests
                         CollectionAssert.AreEqual(ThisArray, new int[] { 25, 26, 2, 7, 6, 30 });
                         break;
                     case 2:
-                        CollectionAssert.AreEqual(ThisArray, new int[] { 26, 3, 9, 8, 7, 1 });
+                        CollectionAssert.AreEqual(ThisArray, new int[] { 26,3,9,8,7,1 });
                         break;
                     case 3:
                         CollectionAssert.AreEqual(ThisArray, new int[] { 27, 28, 4, 9, 2, 26 });

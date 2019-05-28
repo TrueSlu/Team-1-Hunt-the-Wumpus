@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
-namespace Team1_Wumpus
+namespace CaveTesting
 {
     public class CaveSystem
     {
@@ -40,7 +40,7 @@ namespace Team1_Wumpus
             string inputText = sr.ReadLine();
             while (inputText != null)
             {
-                string[] strData = inputText.Split(SEP_CHAR.ToCharArray()[0]);
+                string[] strData = inputText.Split(SEP_CHAR);
                 int caveNum = int.Parse(strData[0]);
                 int[] data = new int[6];
                 for (int i = 0; i < 6; i++)
@@ -114,9 +114,9 @@ namespace Team1_Wumpus
 
 
                 debug.WriteLine("CAVENUM: " + caveNum.ToString() + "\t" +
-                    "CONNECTIONS: " + numConnections[caveNum] +
-                    "\tDIRECTIONS:" + string.Join(",", connectedCaveDirections) + "\n" +
-                    String.Join("\t", System[caveNum].GetConnectedCaves()) + "\n");
+                    "CONNECTIONS: " + numConnections[caveNum] + 
+                    "\tDIRECTIONS:" + string.Join(",", connectedCaveDirections)  + "\n" +
+                    String.Join("\t", System[caveNum].GetConnectedCaves())+ "\n");
 
                 //
 
@@ -204,11 +204,11 @@ namespace Team1_Wumpus
             }
         }
 
-        public Cave(int c, List<int> dirs)
+        public Cave(int c,List<int> dirs)
         {
             CaveNumber = c;
             CalculateAdjacentCaves();
-            ConnectedCaves = new int[] { 0, 0, 0, 0, 0, 0 };
+            ConnectedCaves = new int[] {0,0,0,0,0,0};
             foreach (int direction in dirs)
             {
                 ConnectedCaves[direction] = AdjacentCaves[direction];
@@ -224,7 +224,7 @@ namespace Team1_Wumpus
             // microsoft land has modulus less than zero???
             // https://en.wikipedia.org/wiki/Modulo_operation has range from 0 to n-1, as it should be
 
-            if (corrected <= 0)
+            if (corrected<=0)
             {
                 corrected += 30;
                 return corrected;

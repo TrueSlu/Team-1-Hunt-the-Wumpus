@@ -10,25 +10,14 @@ using System.Windows.Forms;
 
 namespace Team1_Wumpus
 {
-    public partial class FormHighScore : Form
+    public partial class FormHighScore : System.Windows.Forms.Form
     {
         Random rnd = new Random();
 
-        List<HighScore> scores = new List<HighScore>();
+        public List<HighScore> scores { get; set; }
         public FormHighScore()
         {
             InitializeComponent();
-        }
-
-        private void listBoxOrders_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            HighScore s = scores[listBoxScores.SelectedIndex];
-
-            textBoxName.Text = s.Name;
-            textBoxCave.Text = s.Cave;
-            textBoxScore.Text = s.Score.ToString();
-
-
         }
 
         private void UpdateListBox()
@@ -36,12 +25,28 @@ namespace Team1_Wumpus
             listBoxScores.Items.Clear();
             foreach (HighScore s in scores)
             {
-                listBoxScores.Items.Add(s);
+                listBoxScores.Items.Add(s.Score);
             }
 
         }
 
-        private void buttonDisplay_Click(object sender, EventArgs e)
+        private void listBoxScores_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                HighScore s = scores[listBoxScores.SelectedIndex];
+
+                textBoxName.Text = s.Name;
+                textBoxCave.Text = s.Cave;
+                textBoxScore.Text = s.Score.ToString();
+            } catch
+            {
+                
+            }
+            
+        }
+
+        private void buttonDisplay_Click_1(object sender, EventArgs e)
         {
             String name = textBoxName.Text;
             String cave = textBoxCave.Text;
@@ -50,7 +55,11 @@ namespace Team1_Wumpus
             HighScore hs = new HighScore(name, cave, score);
 
             scores.Add(hs);
+        }
 
+        private void FormHighScore_Load(object sender, EventArgs e)
+        {
+            UpdateListBox();
             scores = scores.OrderByDescending(x => x.Score).ToList();
             UpdateListBox();
 
@@ -59,5 +68,18 @@ namespace Team1_Wumpus
                 listBoxScores.Items.Remove(scores[10]);
             }
         }
+
+        private void SortHighScores()
+        {
+            scores = scores.OrderByDescending(x => x.Score).ToList();
+            UpdateListBox();
+
+            if (listBoxScores.Items.Count > 10)
+            {
+                listBoxScores.Items.Remove(scores[10]);
+            }
+        }
+            
+
     }
 }

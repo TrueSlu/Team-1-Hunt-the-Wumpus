@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Team1_Wumpus
 {
-    public partial class GameForm : Form
+    public partial class GameForm : System.Windows.Forms.Form
     {
 
         public Game GameObject { get; set; }
@@ -30,7 +30,12 @@ namespace Team1_Wumpus
 
         private void GameForm_Load(object sender, EventArgs e)
         {
+
         }
 
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
