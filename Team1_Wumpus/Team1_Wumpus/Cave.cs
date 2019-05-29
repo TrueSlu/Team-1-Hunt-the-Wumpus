@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
-namespace CaveTesting
+namespace Team1_Wumpus
 {
     public class CaveSystem
     {
@@ -23,6 +23,10 @@ namespace CaveTesting
 
         public CaveSystem(string fileName)
         {
+            for (int i = 1; i <= 30; i++)
+            {
+                System[i] = new Cave();
+            }
             ReadFile(fileName);
         }
 

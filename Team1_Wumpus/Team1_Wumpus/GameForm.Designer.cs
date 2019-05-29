@@ -48,7 +48,7 @@
             this.buySecretButtonClick = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.roomNumber = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.messageLabel = new System.Windows.Forms.Label();
             this.playerInfoBox.SuspendLayout();
             this.movementBox.SuspendLayout();
             this.shopBox.SuspendLayout();
@@ -288,23 +288,23 @@
             this.roomNumber.Size = new System.Drawing.Size(148, 28);
             this.roomNumber.TabIndex = 8;
             // 
-            // label7
+            // messageLabel
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(587, 357);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(99, 20);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "messagelabel";
+            this.messageLabel.AutoSize = true;
+            this.messageLabel.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.messageLabel.Location = new System.Drawing.Point(587, 357);
+            this.messageLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.messageLabel.Name = "messageLabel";
+            this.messageLabel.Size = new System.Drawing.Size(99, 20);
+            this.messageLabel.TabIndex = 9;
+            this.messageLabel.Text = "messagelabel";
             // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 410);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.messageLabel);
             this.Controls.Add(this.roomNumber);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.shopBox);
@@ -346,6 +346,6 @@
         private System.Windows.Forms.Button buySecretButtonClick;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox roomNumber;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label messageLabel;
     }
 }

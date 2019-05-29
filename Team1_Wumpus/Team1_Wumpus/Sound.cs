@@ -15,8 +15,8 @@ namespace Team1_Wumpus
         //soundplayer = new sound
         public void PlayBats()
         {
-            SoundPlayer player = new SoundPlayer(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "\\batschatter.wav"));
-            player.Play();
+            //SoundPlayer player = new SoundPlayer(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "\\batschatter.wav"));
+            //player.Play();
         }
 
         public void background()

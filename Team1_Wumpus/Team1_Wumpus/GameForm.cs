@@ -26,6 +26,12 @@ namespace Team1_Wumpus
             playerInfoArrowsBox.Text = GameObject.PlayerManager.Arrows.ToString();
             playerInfoTurnsBox.Text = GameObject.PlayerManager.TurnsTaken.ToString();
             playerInfoScoreBox.Text = GameObject.PlayerManager.Score.ToString();
+            roomNumber.Text = GameObject.LocationManager.Player.ToString();
+            messageLabel.Text = "Time to Hunt!";
+            foreach(int AvailableCave in GameObject.CaveManager.GetConnectedList(GameObject.LocationManager.Player))
+            {
+                availableCaveMoves.Items.Add(AvailableCave);
+            }
         }
 
         private void GameForm_Load(object sender, EventArgs e)
