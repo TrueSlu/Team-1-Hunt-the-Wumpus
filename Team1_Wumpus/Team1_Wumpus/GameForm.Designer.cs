@@ -49,6 +49,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.roomNumber = new System.Windows.Forms.TextBox();
             this.messageLabel = new System.Windows.Forms.Label();
+            this.movePlayerButton = new System.Windows.Forms.Button();
             this.playerInfoBox.SuspendLayout();
             this.movementBox.SuspendLayout();
             this.shopBox.SuspendLayout();
@@ -68,7 +69,7 @@
             // fireArrowButtonClick
             // 
             this.fireArrowButtonClick.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fireArrowButtonClick.Location = new System.Drawing.Point(211, 124);
+            this.fireArrowButtonClick.Location = new System.Drawing.Point(204, 75);
             this.fireArrowButtonClick.Margin = new System.Windows.Forms.Padding(4);
             this.fireArrowButtonClick.Name = "fireArrowButtonClick";
             this.fireArrowButtonClick.Size = new System.Drawing.Size(112, 84);
@@ -229,6 +230,7 @@
             // 
             // movementBox
             // 
+            this.movementBox.Controls.Add(this.movePlayerButton);
             this.movementBox.Controls.Add(this.availableCaveMoves);
             this.movementBox.Controls.Add(this.button3);
             this.movementBox.Controls.Add(this.fireArrowButtonClick);
@@ -299,6 +301,17 @@
             this.messageLabel.TabIndex = 9;
             this.messageLabel.Text = "messagelabel";
             // 
+            // movePlayerButton
+            // 
+            this.movePlayerButton.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.movePlayerButton.Location = new System.Drawing.Point(204, 177);
+            this.movePlayerButton.Margin = new System.Windows.Forms.Padding(4);
+            this.movePlayerButton.Name = "movePlayerButton";
+            this.movePlayerButton.Size = new System.Drawing.Size(112, 84);
+            this.movePlayerButton.TabIndex = 6;
+            this.movePlayerButton.Text = "Move Here";
+            this.movePlayerButton.UseVisualStyleBackColor = true;
+            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -347,5 +360,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox roomNumber;
         private System.Windows.Forms.Label messageLabel;
+        private System.Windows.Forms.Button movePlayerButton;
     }
 }
