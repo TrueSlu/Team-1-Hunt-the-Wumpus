@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buyArrowButtonClick = new System.Windows.Forms.Button();
+            this.fireArrowButtonClick = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.playerInfoBox = new System.Windows.Forms.GroupBox();
@@ -45,7 +45,7 @@
             this.availableCaveMoves = new System.Windows.Forms.ListBox();
             this.movementBox = new System.Windows.Forms.GroupBox();
             this.shopBox = new System.Windows.Forms.GroupBox();
-            this.buySecret = new System.Windows.Forms.Button();
+            this.buySecretButtonClick = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.roomNumber = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -54,27 +54,27 @@
             this.shopBox.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // buyArrowButtonClick
             // 
-            this.button1.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(28, 71);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 84);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Buy Arrow";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buyArrowButtonClick.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buyArrowButtonClick.Location = new System.Drawing.Point(28, 71);
+            this.buyArrowButtonClick.Margin = new System.Windows.Forms.Padding(4);
+            this.buyArrowButtonClick.Name = "buyArrowButtonClick";
+            this.buyArrowButtonClick.Size = new System.Drawing.Size(112, 84);
+            this.buyArrowButtonClick.TabIndex = 0;
+            this.buyArrowButtonClick.Text = "Buy Arrow";
+            this.buyArrowButtonClick.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // fireArrowButtonClick
             // 
-            this.button2.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(211, 124);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(112, 84);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Fire Arrow";
-            this.button2.UseVisualStyleBackColor = true;
+            this.fireArrowButtonClick.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fireArrowButtonClick.Location = new System.Drawing.Point(211, 124);
+            this.fireArrowButtonClick.Margin = new System.Windows.Forms.Padding(4);
+            this.fireArrowButtonClick.Name = "fireArrowButtonClick";
+            this.fireArrowButtonClick.Size = new System.Drawing.Size(112, 84);
+            this.fireArrowButtonClick.TabIndex = 1;
+            this.fireArrowButtonClick.Text = "Fire Arrow";
+            this.fireArrowButtonClick.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
@@ -119,6 +119,7 @@
             this.playerInfoBox.TabIndex = 4;
             this.playerInfoBox.TabStop = false;
             this.playerInfoBox.Text = "Player Info";
+            this.playerInfoBox.Enter += new System.EventHandler(this.playerInfoBox_Enter);
             // 
             // playerInfoScoreBox
             // 
@@ -230,7 +231,7 @@
             // 
             this.movementBox.Controls.Add(this.availableCaveMoves);
             this.movementBox.Controls.Add(this.button3);
-            this.movementBox.Controls.Add(this.button2);
+            this.movementBox.Controls.Add(this.fireArrowButtonClick);
             this.movementBox.Font = new System.Drawing.Font("Old English Text MT", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.movementBox.Location = new System.Drawing.Point(404, 18);
             this.movementBox.Margin = new System.Windows.Forms.Padding(4);
@@ -243,8 +244,8 @@
             // 
             // shopBox
             // 
-            this.shopBox.Controls.Add(this.buySecret);
-            this.shopBox.Controls.Add(this.button1);
+            this.shopBox.Controls.Add(this.buySecretButtonClick);
+            this.shopBox.Controls.Add(this.buyArrowButtonClick);
             this.shopBox.Font = new System.Drawing.Font("Old English Text MT", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.shopBox.Location = new System.Drawing.Point(752, 18);
             this.shopBox.Margin = new System.Windows.Forms.Padding(4);
@@ -255,16 +256,16 @@
             this.shopBox.TabStop = false;
             this.shopBox.Text = "Shop";
             // 
-            // buySecret
+            // buySecretButtonClick
             // 
-            this.buySecret.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buySecret.Location = new System.Drawing.Point(28, 177);
-            this.buySecret.Margin = new System.Windows.Forms.Padding(4);
-            this.buySecret.Name = "buySecret";
-            this.buySecret.Size = new System.Drawing.Size(112, 84);
-            this.buySecret.TabIndex = 1;
-            this.buySecret.Text = "Buy Secret";
-            this.buySecret.UseVisualStyleBackColor = true;
+            this.buySecretButtonClick.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buySecretButtonClick.Location = new System.Drawing.Point(28, 177);
+            this.buySecretButtonClick.Margin = new System.Windows.Forms.Padding(4);
+            this.buySecretButtonClick.Name = "buySecretButtonClick";
+            this.buySecretButtonClick.Size = new System.Drawing.Size(112, 84);
+            this.buySecretButtonClick.TabIndex = 1;
+            this.buySecretButtonClick.Text = "Buy Secret";
+            this.buySecretButtonClick.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -279,6 +280,7 @@
             // 
             // roomNumber
             // 
+            this.roomNumber.Enabled = false;
             this.roomNumber.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.roomNumber.Location = new System.Drawing.Point(368, 357);
             this.roomNumber.Margin = new System.Windows.Forms.Padding(4);
@@ -324,8 +326,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buyArrowButtonClick;
+        private System.Windows.Forms.Button fireArrowButtonClick;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox playerInfoBox;
@@ -341,7 +343,7 @@
         private System.Windows.Forms.ListBox availableCaveMoves;
         private System.Windows.Forms.GroupBox movementBox;
         private System.Windows.Forms.GroupBox shopBox;
-        private System.Windows.Forms.Button buySecret;
+        private System.Windows.Forms.Button buySecretButtonClick;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox roomNumber;
         private System.Windows.Forms.Label label7;

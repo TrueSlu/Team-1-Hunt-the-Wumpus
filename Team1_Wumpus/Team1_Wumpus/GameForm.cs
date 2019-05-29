@@ -30,10 +30,15 @@ namespace Team1_Wumpus
 
         private void GameForm_Load(object sender, EventArgs e)
         {
-
+            ReinitializePlayerInfoBox();
         }
 
         private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void playerInfoBox_Enter(object sender, EventArgs e)
         {
 
         }
