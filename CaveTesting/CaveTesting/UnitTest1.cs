@@ -66,6 +66,7 @@ namespace CaveTests
                 }
             }
 
+            //removing duplicates and making connections double sided
             debug.Close();
         }
     }

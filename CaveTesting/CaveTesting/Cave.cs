@@ -9,6 +9,7 @@ namespace CaveTesting
     public class CaveSystem
     {
         string SEP_CHAR = "\t";
+
         //format of the lists returned are 
         //six integer list
         //position 0 is cave directly north
@@ -27,20 +28,34 @@ namespace CaveTesting
 
         public CaveSystem(char mode)
         {
-            if (mode == 'r')
+            for (int i = 1; i <= 30; i++)
+            {
+                System[i] = new Cave();
+            }
+
+        if (mode == 'r')
             {
                 MakeRandomSystem();
             }
         }
 
-        public CaveSystem() { }
+        //test mode, defaults to all connected
+        public CaveSystem()
+        {
+            for (int i = 1; i <= 30; i++)
+            {
+                System[i] = new Cave(i);
+                System[i].MakeAllConnected();
+            }
+        }
+
         private void ReadFile(string fileName)
         {
             StreamReader sr = new StreamReader(fileName);
             string inputText = sr.ReadLine();
             while (inputText != null)
             {
-                string[] strData = inputText.Split(SEP_CHAR);
+                string[] strData = inputText.Split(SEP_CHAR.ToCharArray()[0]);
                 int caveNum = int.Parse(strData[0]);
                 int[] data = new int[6];
                 for (int i = 0; i < 6; i++)
@@ -62,11 +77,10 @@ namespace CaveTesting
             {
                 string lineOutputToFile = i.ToString() + SEP_CHAR;
                 Cave thisCave = new Cave(i);
-                int[] thisCaveAdjacents = thisCave.GetConnectedCaves();
+                int[] thisCaveAdjacents = thisCave.GetConnectedArray();
 
-                lineOutputToFile += String.Join(SEP_CHAR, System[i].GetConnectedCaves());
-
-                //bad code, doesn't work
+                lineOutputToFile +=
+                    String.Join(SEP_CHAR, System[i].GetConnectedArray());
 
 
                 fout.Write(lineOutputToFile + Environment.NewLine);
@@ -74,11 +88,61 @@ namespace CaveTesting
             fout.Close();
         }
 
-        private void MakeRandomSystem()
+        //makes the random directions used in MakeRandomSystem
+        private int[,] MakeRandomDirections()
         {
+            StreamWriter infoOut = new StreamWriter("MakeRandomDirectionsOut.txt");
+
+            Random r = new Random();
+            int[] numConnections = new int[31];
+            int[,] toReturn = new int[31, 6];
+            for(int i=1; i<=30;i++)
+            {
+                numConnections[i] = r.Next(1, 4);
+            }
+
+            infoOut.Close();
+            return toReturn;
+        }
+        public void MakeRandomSystem()
+        {
+            Random r = new Random();
+            int[] numConnections = new int[31];         // stores number of connections randomly made
+            for (int i = 1; i <= 30; i++)
+            {
+                numConnections[i] = 0;
+            }
+            StreamWriter infoOut = new StreamWriter("values.txt");  //debug information
+
+            //making one connection for each room, as required
+            for (int caveNum = 1; caveNum <=30; caveNum++)
+            {
+                Cave ThisCave = System[caveNum];
+                int connectionDirection = r.Next(0, 6); //random direction to make
+                int randomCaveNumber = System[caveNum].GetAdjacentArray()[connectionDirection];
+                if (!IsConnected(caveNum, randomCaveNumber))  // checks if connection not already made
+                {
+                    infoOut.WriteLine("made connection betw." + caveNum.ToString());
+                    numConnections[caveNum]++;
+                    numConnections[randomCaveNumber]++;
+                    System[caveNum].MakeConnection(randomCaveNumber); //makes connection FROM caveNum to the random
+                }
+
+                infoOut.WriteLine("CAVENUM: " + caveNum.ToString() + "\t" +
+                    "DIRECTION:" + connectionDirection.ToString() + "\n" +
+                    "DIRECTION CAVE NUMBER: " + randomCaveNumber.ToString() + "\n" +
+                    String.Join("\t", System[caveNum].GetConnectedArray()) + "\n");
+            }
+
+            infoOut.Close();
+        }
+
+        private void DEPMakeRandomSystem() //old code, does not make correct number of connections
+        {
+            Random r = new Random();
+
             int[] numConnections = new int[31];
             int[] currentConnections = new int[31];
-            Random r = new Random();
             //assigns the number of connections each cave will have
             for (int i = 1; i < 31; i++)
             {
@@ -91,9 +155,11 @@ namespace CaveTesting
             int randomCaveDirection;
             for (int caveNum = 1; caveNum < 31; caveNum++)
             {
-                //makes list with the numbers of the directions the connections will be made
+                // makes list with the numbers of the directions 
+                // the connections will be made
                 List<int> connectedCaveDirections = new List<int>();
-                for (int connectedCavesMade = 1; connectedCavesMade <= numConnections[caveNum]; connectedCavesMade++)
+                for (int connectedCavesMade = 1;
+                    connectedCavesMade <= numConnections[caveNum]; connectedCavesMade++)
                 {
                     randomCaveDirection = r.Next(0, 6);
                     if (connectedCaveDirections.Contains(randomCaveDirection))
@@ -114,16 +180,54 @@ namespace CaveTesting
 
 
                 debug.WriteLine("CAVENUM: " + caveNum.ToString() + "\t" +
-                    "CONNECTIONS: " + numConnections[caveNum] + 
-                    "\tDIRECTIONS:" + string.Join(",", connectedCaveDirections)  + "\n" +
-                    String.Join("\t", System[caveNum].GetConnectedCaves())+ "\n");
+                    "CONNECTIONS: " + numConnections[caveNum] +
+                    "\tDIRECTIONS:" + string.Join(",", connectedCaveDirections) + "\n" +
+                    String.Join("\t", System[caveNum].GetConnectedArray()) + "\n");
 
                 //
 
             }
 
+            //making connections double-sided
+            for (int caveNum = 1; caveNum < 31; caveNum++)
+            {
+
+                for (int caveDir = 0; caveDir < 6; caveDir++)
+                {
+                    int connectedCave = System[caveNum].GetConnectedArray()[caveDir];
+                    if (connectedCave != 0)
+                    {
+                        System[connectedCave].MakeConnection(caveNum);
+                    }
+                }
+
+            }
+
+            //removing excess connections
+            for (int caveNum = 1; caveNum < 31; caveNum++)
+            {
+                while (System[caveNum].NumberConnections() > 3)
+                {
+                    bool ConnectionHasBeenRemoved = false;
+                    while (!ConnectionHasBeenRemoved)
+                    {
+                        int randomDirection = r.Next(0, 6);
+                        int randomDirectionCaveNum =
+                            System[caveNum].GetConnectedArray()[randomDirection];
+                        if (randomDirectionCaveNum != 0
+                             && System[randomDirectionCaveNum].NumberConnections() - 1 >= 1)
+                        {
+                            System[caveNum].RemoveConnection(randomDirection);
+                            //removing from other side
+                            System[randomDirectionCaveNum]
+                                .RemoveConnection((randomDirection + 3) % 6);
+                            ConnectionHasBeenRemoved = true;
+                        }
+
+                    }
+                }
+            }
             debug.Close();
-            //making all connected files
 
         }
 
@@ -132,17 +236,17 @@ namespace CaveTesting
         public int[] GetAdjacentArray(int caveNumber)
         {
             //returns list with the adjacent caves
-            return System[caveNumber].GetAdjacentCaves();
+            return System[caveNumber].GetAdjacentArray();
         }
 
         public int[] GetConnectedArray(int caveNumber)
         {
-            return System[caveNumber].GetConnectedCaves();
+            return System[caveNumber].GetConnectedArray();
         }
 
         public List<int> GetConnectedList(int caveNumber)
         {
-            int[] unfCaves = System[caveNumber].GetConnectedCaves();
+            int[] unfCaves = System[caveNumber].GetConnectedArray();
             List<int> connectedCaves = new List<int>();
             for (int i = 0; i < 6; i++)
             {
@@ -152,6 +256,18 @@ namespace CaveTesting
                 }
             }
             return connectedCaves;
+        }
+
+        public bool IsConnected(int caveNum1, int caveNum2)
+        {
+            foreach (int connectedCaveNum in System[caveNum1].GetConnectedArray())
+            {
+                if (connectedCaveNum == caveNum2)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 
@@ -204,11 +320,11 @@ namespace CaveTesting
             }
         }
 
-        public Cave(int c,List<int> dirs)
+        public Cave(int c, List<int> dirs)
         {
             CaveNumber = c;
             CalculateAdjacentCaves();
-            ConnectedCaves = new int[] {0,0,0,0,0,0};
+            ConnectedCaves = new int[] { 0, 0, 0, 0, 0, 0 };
             foreach (int direction in dirs)
             {
                 ConnectedCaves[direction] = AdjacentCaves[direction];
@@ -216,15 +332,41 @@ namespace CaveTesting
         }
         public Cave() { }
 
+        public void MakeAllConnected()
+        {
+            ConnectedCaves = AdjacentCaves;
+        }
+        public void MakeConnection(int caveNum)
+        {
+            for (int direction = 0; direction < 6; direction++)
+            {
+                if (AdjacentCaves[direction] == caveNum)
+                {
+                    ConnectedCaves[direction] = caveNum;
+                }
+            }
+        }
+
+        public void RemoveConnection(int caveNum)
+        {
+            for (int direction = 0; direction < 6; direction++)
+            {
+                if (AdjacentCaves[direction] == caveNum)
+                {
+                    ConnectedCaves[direction] = 0;
+                }
+            }
+        }
         public int FormatCaveNumber(int toFormat)
         {
             //return toFormat % 30;
             int corrected = toFormat % 30;
 
             // microsoft land has modulus less than zero???
-            // https://en.wikipedia.org/wiki/Modulo_operation has range from 0 to n-1, as it should be
+            // https://en.wikipedia.org/wiki/Modulo_operation
+            // has range from 0 to n-1, as it should be
 
-            if (corrected<=0)
+            if (corrected <= 0)
             {
                 corrected += 30;
                 return corrected;
@@ -235,13 +377,13 @@ namespace CaveTesting
             }
         }
 
-        public int[] GetAdjacentCaves()
+        public int[] GetAdjacentArray()
         {
             CalculateAdjacentCaves();
             return AdjacentCaves;
         }
 
-        public int[] GetConnectedCaves()
+        public int[] GetConnectedArray()
         {
             return ConnectedCaves;
         }
@@ -307,6 +449,19 @@ namespace CaveTesting
                                 southWestCave, northWestCave};
 
 
+        }
+
+        public int NumberConnections()
+        {
+            int i = 0;
+            foreach (int connCaveNum in ConnectedCaves)
+            {
+                if (connCaveNum != 0)
+                {
+                    i++;
+                }
+            }
+            return i;
         }
     }
 }
