@@ -8,12 +8,13 @@ namespace Team1_Wumpus
 {
     public class Location
     {
-        public List<int> Bats { get; set; }
-        public List<int> Pits { get; set; }
+        public int[] Bats { get; set; }
+        public int[] Pits { get; set; }
         public int Player { get; set; }
         public int Wumpus { get; set; }
         public CaveSystem Cave { get; set; }
         public int Cavenumber { get; set; }
+
         public List<int> ConnectedCaves { get; set; }
      
         //method that initializes locations of objects
@@ -21,14 +22,11 @@ namespace Team1_Wumpus
         {
             //1 is the smallest room number and 31 is the largest
             Random r = new Random();
-            int bat1;
-            int bat2;
-            int pit1;
-            int pit2;
-            bat1 = r.Next(1, 31);
-            bat2 = r.Next(1, 31);
-            pit1 = r.Next(1, 31);
-            pit2 = r.Next(1, 31);
+            int bat1 = r.Next(1, 31);
+            int bat2 = r.Next(1, 31);
+            int pit1 = r.Next(1, 31);
+            int pit2 = r.Next(1, 31);
+
             Wumpus = r.Next(1, 31);
             Player = r.Next(1, 31);
             if(bat1 == bat2||bat1==pit1||bat1==pit2 || bat1 ==Wumpus || bat1 ==Player)
@@ -61,7 +59,7 @@ namespace Team1_Wumpus
         public void BatsMove()
         {
             Random r = new Random();
-            for (int i = 0; i < Bats.Count; i++)
+            for (int i = 0; i < Bats.Length; i++)
             {
                 if(Bats[i] == Player)
                 {
@@ -80,7 +78,7 @@ namespace Team1_Wumpus
         public void PitsMove()
         {
             Random r = new Random();
-            for (int i = 0; i < Pits.Count; i++)
+            for (int i = 0; i < Pits.Length; i++)
             {
                 if(Pits[i] == Player)
                 {
@@ -113,7 +111,7 @@ namespace Team1_Wumpus
                 }
                 
             }
-            for (int i = 0; i < Pits.Count; i++)
+            for (int i = 0; i < Pits.Length; i++)
             {
                 if(Wumpus == i)
                 {
@@ -122,7 +120,7 @@ namespace Team1_Wumpus
                 }
                     
             }
-            for(int i = 0; i<Bats.Count; i++)
+            for(int i = 0; i<Bats.Length; i++)
             {
                 if(Wumpus == i)
                 {
