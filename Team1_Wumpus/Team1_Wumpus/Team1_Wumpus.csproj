@@ -87,6 +87,7 @@
     <Compile Include="TriviaForm.Designer.cs">
       <DependentUpon>TriviaForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TriviaManager.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="WumpuSplash.cs">
       <SubType>Form</SubType>
