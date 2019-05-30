@@ -44,11 +44,37 @@ namespace Team1_Wumpus
 
         }
 
-        public void MakeMove()
+        public void MovePlayer(int desiredCave)
         {
+            LocationManager.PlayerMovement(desiredCave);
+            PlayerManager.TakeATurn();
 
+            string PositionStatus = LocationManager.CheckPositions();
+            if (PositionStatus == "wumpus")
+            {
+                //trivia
+                //sound
+                LocationManager.WumpusMoves();
+            } else if (PositionStatus == "pit")
+            {
+                //trivia
+                //sound
+                LocationManager.PitsMove();
+            } else if (PositionStatus == "bat")
+            {
+                //trivia
+                //sound
+                LocationManager.BatsMove();
+            }
+
+            //get a trivia thing and show it
         }
 
+        public bool TriviaBattle(int NumberToAsk, int NumberToWin)
+        {
+            //call trivia thing
+
+        }
 
 
 

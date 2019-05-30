@@ -54,8 +54,17 @@ namespace Team1_Wumpus
 
         private void movePlayerButton_Click(object sender, EventArgs e)
         {
-            int desiredRoom = AvailableCavesList[availableCaveMoves.SelectedIndex];
-            GameObject.LocationManager.PlayerMovement(desiredRoom);
+            if (availableCaveMoves.SelectedIndex >= AvailableCavesList.Count || availableCaveMoves.SelectedIndex < 0) {
+                MessageBox.Show("Please select a cave to move to.");
+            } else
+            {
+                int desiredRoom = AvailableCavesList[availableCaveMoves.SelectedIndex];
+                GameObject.MovePlayer(desiredRoom);
+
+                ReinitializePlayerInfoBox();
+
+
+            }
         }
     }
 }
