@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
-namespace Team1_Wumpus
+namespace CaveTesting
 {
     public class CaveSystem
     {
@@ -23,10 +23,6 @@ namespace Team1_Wumpus
 
         public CaveSystem(string fileName)
         {
-            for (int i = 1; i <= 30; i++)
-            {
-                System[i] = new Cave();
-            }
             ReadFile(fileName);
         }
 
@@ -37,7 +33,7 @@ namespace Team1_Wumpus
                 System[i] = new Cave();
             }
 
-            if (mode == 'r')
+        if (mode == 'r')
             {
                 MakeRandomSystem();
             }
@@ -100,13 +96,12 @@ namespace Team1_Wumpus
             Random r = new Random();
             int[] numConnections = new int[31];
             int[,] toReturn = new int[31, 6];
-            for (int i = 1; i <= 30; i++)
+            for(int i=1; i<=30;i++)
             {
                 numConnections[i] = r.Next(1, 4);
             }
 
             infoOut.Close();
-
             return toReturn;
         }
         public void MakeRandomSystem()
@@ -120,7 +115,7 @@ namespace Team1_Wumpus
             StreamWriter infoOut = new StreamWriter("values.txt");  //debug information
 
             //making one connection for each room, as required
-            for (int caveNum = 1; caveNum <= 30; caveNum++)
+            for (int caveNum = 1; caveNum <=30; caveNum++)
             {
                 Cave ThisCave = System[caveNum];
                 int connectionDirection = r.Next(0, 6); //random direction to make

@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,6 @@ namespace Team1_Wumpus
         public int TurnsTaken { get; private set; }
         public int Score { get; private set; }
         public bool IsWumpusDead { get; set; }
-
 
         public Player()
         {
