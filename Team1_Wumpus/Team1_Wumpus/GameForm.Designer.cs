@@ -76,6 +76,7 @@
             this.fireArrowButtonClick.TabIndex = 1;
             this.fireArrowButtonClick.Text = "Fire Arrow";
             this.fireArrowButtonClick.UseVisualStyleBackColor = true;
+            this.fireArrowButtonClick.Click += new System.EventHandler(this.fireArrowButtonClick_Click);
             // 
             // button3
             // 

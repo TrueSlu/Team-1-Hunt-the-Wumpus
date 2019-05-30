@@ -67,7 +67,12 @@ namespace Team1_Wumpus
                 LocationManager.BatsMove();
             }
 
-            //get a trivia thing and show it
+            //get a secret thing and show it
+        }
+
+        public void FireArrow(int desiredCave)
+        {
+
         }
 
         public bool TriviaBattle(int NumberToAsk, int NumberToWin)

@@ -9,6 +9,7 @@ namespace Team1_Wumpus
     public class TriviaManager
     {
         List<Trivia> TriviaQuestions = new List<Trivia>();
+        List<int> ShownQuestionIDs = new List<int>();
         TriviaForm TriviaDialog = new TriviaForm();
         Random rnd = new Random();
 
@@ -48,19 +49,19 @@ namespace Team1_Wumpus
         }
         public int StartTrivia(int NumberToAsk)
         {
-            int NumberCorrect = 0;
-            TriviaDialog.ShowDialog();
-
-
+            List<Trivia> QuestionsToShow = new List<Trivia>();
+            
             for (int i = 0; i < NumberToAsk; i++)
             {
-                int QuestionNumber;
-                do
+                int QuestionNumber = rnd.Next(0, TriviaQuestions.Count);
+                while (CheckIfQuestionShown(QuestionNumber))
                 {
                     QuestionNumber = rnd.Next(0, TriviaQuestions.Count);
-                } while (CheckIfQuestionShown(QuestionNumber));
-                TriviaDialog.question = TriviaQuestions[QuestionNumber];
+                }
+                QuestionsToShow.Add(TriviaQuestions[QuestionNumber]);
             }
+
+            TriviaDialog.Quset
         }
 
         public void NextQuestionInDialog()
@@ -73,19 +74,35 @@ namespace Team1_Wumpus
 
         }
 
-        private bool CheckIfSecretShown()
+        private bool CheckIfSecretShown(int desiredSecret)
         {
-
+            foreach (int secretID in ShownSecretIDs)
+            {
+                if (questionID == desiredQuestion)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
         }
 
-        private bool CheckIfQuestionShown()
+        private bool CheckIfQuestionShown(int desiredQuestion)
         {
-
-        }
-
-        private bool CheckIfCorrect()
-        {
-
+            foreach(int questionID in ShownQuestionIDs)
+            {
+                if (questionID == desiredQuestion)
+                {
+                    return true;
+                } else
+                {
+                    return false;
+                }
+            }
+            return false;
         }
     }
 }
