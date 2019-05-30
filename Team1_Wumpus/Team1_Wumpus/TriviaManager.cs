@@ -29,6 +29,14 @@ namespace Team1_Wumpus
             Trivia q13 = new Trivia("What is the capital of Turkey?", "Istanbul", "Ankara", "Izmir", 2, 13);
             Trivia q14 = new Trivia("What year were the Oscars first introduced?", "1929", "1923", "1953", 1, 14);
             Trivia q15 = new Trivia("What year was Tom & Jerry created?", "1958", "1994", "1940", 3, 15);
+            Trivia q16 = new Trivia("What year was Bill Gates born?", "1955", "1951", "1952", 1, 16);
+            Trivia q17 = new Trivia("What month was Windows 10 released?", "June", "December", "July", 3, 17);
+            Trivia q18 = new Trivia("What year was Internet Explorer released?", "1994", "1995", "1996", 2, 18);
+            Trivia q19 = new Trivia("What is the most commonly spoken language in the world?", "English", "Chinese", "Spanish", 2, 19);
+            Trivia q20 = new Trivia("What year was slavery abolished in the United States?", "1865", "1874", "1867", 1, 20);
+            Trivia q21 = new Trivia("What year was the Space Needle built?", "1976", "1961", "1994", 2, 21);
+
+
             //adds questions to list
             TriviaQuestions.Add(q1);
             TriviaQuestions.Add(q2);
