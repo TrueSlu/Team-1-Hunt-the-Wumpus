@@ -35,12 +35,12 @@ namespace Team1_Wumpus
             GameForm GameUI = new GameForm();
             GameUI.GameObject = this;
             SoundManager.PlayBats();
+            LocationManager.InitializePosition();
             GameUI.ShowDialog();
         }
 
         public void InitializeGame()
         {
-            LocationManager.InitializePosition();
 
         }
 

@@ -13,6 +13,8 @@ namespace Team1_Wumpus
     public partial class GameForm : System.Windows.Forms.Form
     {
 
+        List<int> AvailableCavesList = new List<int>();
+
         public Game GameObject { get; set; }
         public GameForm()
         {
@@ -28,9 +30,10 @@ namespace Team1_Wumpus
             playerInfoScoreBox.Text = GameObject.PlayerManager.Score.ToString();
             roomNumber.Text = GameObject.LocationManager.Player.ToString();
             messageLabel.Text = "Time to Hunt!";
-            foreach(int AvailableCave in GameObject.CaveManager.GetConnectedList(GameObject.LocationManager.Player))
+            foreach(int AvailableCave in GameObject.CaveManager.GetConnectedList(GameObject.LocationManager.Wumpus))
             {
                 availableCaveMoves.Items.Add(AvailableCave);
+                AvailableCavesList.Add(AvailableCave);
             }
         }
 
@@ -47,6 +50,12 @@ namespace Team1_Wumpus
         private void playerInfoBox_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void movePlayerButton_Click(object sender, EventArgs e)
+        {
+            int desiredRoom = AvailableCavesList[availableCaveMoves.SelectedIndex];
+            GameObject.LocationManager.PlayerMovement(desiredRoom);
         }
     }
 }

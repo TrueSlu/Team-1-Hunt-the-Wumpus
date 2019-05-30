@@ -20,6 +20,9 @@ namespace Team1_Wumpus
         //method that initializes locations of objects
         public void InitializePosition()
         {
+
+            Bats = new int[2];
+            Pits = new int[2];
             //1 is the smallest room number and 31 is the largest
             Random r = new Random();
             int bat1 = r.Next(1, 31);
@@ -136,25 +139,7 @@ namespace Team1_Wumpus
 
         public void PlayerMovement(int desiredcave)
         {
-            //if wanted cave's number is avaliable then allow movement to that cave
-            int checkForMovement = 0;
-            foreach (int availableCave in ConnectedCaves)
-            {
-                if (desiredcave == availableCave)
-                {
-                    //allow movement to the cave
-                    Player = desiredcave;
-                    checkForMovement++;
-                }
-           
-            }
-
-            if (checkForMovement < 1)
-            {
-                return;
-            }
-
-            ConnectedCaves = Cave.GetConnectedList(Cavenumber);
+            Player = desiredcave;
         }
 
         

@@ -44,12 +44,12 @@
             this.playerInfoCoinsBox = new System.Windows.Forms.TextBox();
             this.availableCaveMoves = new System.Windows.Forms.ListBox();
             this.movementBox = new System.Windows.Forms.GroupBox();
+            this.movePlayerButton = new System.Windows.Forms.Button();
             this.shopBox = new System.Windows.Forms.GroupBox();
             this.buySecretButtonClick = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.roomNumber = new System.Windows.Forms.TextBox();
             this.messageLabel = new System.Windows.Forms.Label();
-            this.movePlayerButton = new System.Windows.Forms.Button();
             this.playerInfoBox.SuspendLayout();
             this.movementBox.SuspendLayout();
             this.shopBox.SuspendLayout();
@@ -244,6 +244,18 @@
             this.movementBox.TabStop = false;
             this.movementBox.Text = "Hunt! (The Wumpus)";
             // 
+            // movePlayerButton
+            // 
+            this.movePlayerButton.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.movePlayerButton.Location = new System.Drawing.Point(204, 177);
+            this.movePlayerButton.Margin = new System.Windows.Forms.Padding(4);
+            this.movePlayerButton.Name = "movePlayerButton";
+            this.movePlayerButton.Size = new System.Drawing.Size(112, 84);
+            this.movePlayerButton.TabIndex = 6;
+            this.movePlayerButton.Text = "Move Here";
+            this.movePlayerButton.UseVisualStyleBackColor = true;
+            this.movePlayerButton.Click += new System.EventHandler(this.movePlayerButton_Click);
+            // 
             // shopBox
             // 
             this.shopBox.Controls.Add(this.buySecretButtonClick);
@@ -300,17 +312,6 @@
             this.messageLabel.Size = new System.Drawing.Size(99, 20);
             this.messageLabel.TabIndex = 9;
             this.messageLabel.Text = "messagelabel";
-            // 
-            // movePlayerButton
-            // 
-            this.movePlayerButton.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.movePlayerButton.Location = new System.Drawing.Point(204, 177);
-            this.movePlayerButton.Margin = new System.Windows.Forms.Padding(4);
-            this.movePlayerButton.Name = "movePlayerButton";
-            this.movePlayerButton.Size = new System.Drawing.Size(112, 84);
-            this.movePlayerButton.TabIndex = 6;
-            this.movePlayerButton.Text = "Move Here";
-            this.movePlayerButton.UseVisualStyleBackColor = true;
             // 
             // GameForm
             // 
