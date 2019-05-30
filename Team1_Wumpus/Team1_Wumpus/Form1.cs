@@ -1,4 +1,5 @@
 ﻿using System;
+using Team1_Wumpus;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,9 @@ namespace Team1_Wumpus
 {
     public partial class Form1 : Form
     {
+        
+
+
         public Form1()
         {
             InitializeComponent();
@@ -25,6 +29,11 @@ namespace Team1_Wumpus
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonNext_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

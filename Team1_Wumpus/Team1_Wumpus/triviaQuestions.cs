@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Team1_Wumpus
 {
-    public class Trivia
+    public class triviaQuestions
     {
-        
+
     }
 }

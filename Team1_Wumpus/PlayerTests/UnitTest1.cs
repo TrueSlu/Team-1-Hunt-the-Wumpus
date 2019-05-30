@@ -1,4 +1,5 @@
 using System;
+using WumpusTests;
 using Team1_Wumpus;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
