@@ -33,7 +33,6 @@
             this.buttonAnswer2 = new System.Windows.Forms.RadioButton();
             this.buttonAnswer1 = new System.Windows.Forms.RadioButton();
             this.labelQuestion = new System.Windows.Forms.Label();
-            this.check = new System.Windows.Forms.Button();
             this.next = new System.Windows.Forms.Button();
             this.noButtonChecked = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
@@ -90,23 +89,15 @@
             this.labelQuestion.TabIndex = 9;
             this.labelQuestion.Text = "Question";
             // 
-            // check
-            // 
-            this.check.Location = new System.Drawing.Point(90, 235);
-            this.check.Name = "check";
-            this.check.Size = new System.Drawing.Size(146, 43);
-            this.check.TabIndex = 8;
-            this.check.Text = "Check Answer";
-            this.check.UseVisualStyleBackColor = true;
-            // 
             // next
             // 
-            this.next.Location = new System.Drawing.Point(90, 185);
+            this.next.Location = new System.Drawing.Point(98, 212);
             this.next.Name = "next";
             this.next.Size = new System.Drawing.Size(146, 44);
             this.next.TabIndex = 7;
             this.next.Text = "Next Question";
             this.next.UseVisualStyleBackColor = true;
+            this.next.Click += new System.EventHandler(this.next_Click_1);
             // 
             // noButtonChecked
             // 
@@ -130,7 +121,6 @@
             this.Controls.Add(this.buttonAnswer2);
             this.Controls.Add(this.buttonAnswer1);
             this.Controls.Add(this.labelQuestion);
-            this.Controls.Add(this.check);
             this.Controls.Add(this.next);
             this.Name = "TriviaForm";
             this.Text = "TriviaForm";
@@ -147,7 +137,6 @@
         private System.Windows.Forms.RadioButton buttonAnswer2;
         private System.Windows.Forms.RadioButton buttonAnswer1;
         private System.Windows.Forms.Label labelQuestion;
-        private System.Windows.Forms.Button check;
         private System.Windows.Forms.Button next;
         private System.Windows.Forms.RadioButton noButtonChecked;
     }

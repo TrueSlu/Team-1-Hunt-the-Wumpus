@@ -13,7 +13,9 @@ namespace Team1_Wumpus
     public partial class TriviaForm : System.Windows.Forms.Form
     {
 
-        public Trivia question { get; set; }
+        public List<Trivia> TriviaQuestions { get; set; }
+        public int NumberCorrect { get; set; }
+        int index = 0;
 
 
 
@@ -26,7 +28,7 @@ namespace Team1_Wumpus
         }
 
 
-        private void next_Click(object sender, EventArgs e)
+        private void next_Click()
         {
             //makes the correct/incorrect label invisible
             labelCorrectIncorrect.Visible = false;
@@ -38,12 +40,16 @@ namespace Team1_Wumpus
             buttonAnswer3.Text = question.Answer3;
         }
 
-        private void check_Click(object sender, EventArgs e)
+        private void check_Click()
         {
-            checkAnswer();
+            bool correct = checkAnswer(TriviaQuestions[index]);
+            if (correct)
+            {
+                NumberCorrect++;
+            }
         }
 
-        private void checkAnswer()
+        private bool checkAnswer(Trivia Question)
         {
             //checks answer
             if (noButtonChecked.Checked)
@@ -53,45 +59,58 @@ namespace Team1_Wumpus
             else
             {
                 labelCorrectIncorrect.Visible = true;
-                if (index == 0 || index == 4 || index == 11 || index == 13)
+                if (Question.CorrectAnswer == 1)
                 { 
                     if (buttonAnswer1.Checked)
                     {
                         labelCorrectIncorrect.Text = "Correct";
+                        return true;
                     }
                     else
                     {
                         labelCorrectIncorrect.Text = "Incorrect";
+                        return false;
                     }
                 }
-                else if (index == 1 || index == 6 || index == 8 || index == 13)
+                else if (Question.CorrectAnswer == 2)
                 {
                     if (buttonAnswer2.Checked)
                     {
                         labelCorrectIncorrect.Text = "Correct";
+                        return true;
                     }
                     else
                     {
                         labelCorrectIncorrect.Text = "Incorrect";
+                        return false;
                     }
                 }
-                else if (index == 2 || index == 3 || index == 5 || index == 7 || index == 9 || index == 10 || index == 14)
+                else if (Question.CorrectAnswer == 3)
                 {
                     if (buttonAnswer3.Checked)
                     {
                         labelCorrectIncorrect.Text = "Correct";
+                        return true;
                     }
                     else
                     {
                         labelCorrectIncorrect.Text = "Incorrect";
+                        return false;
                     }
                 }
             }
+            return false;
         }
 
         private void TriviaForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void next_Click_1(object sender, EventArgs e)
+        {
+            check_Click();
+            next_Click();
         }
     }
 }

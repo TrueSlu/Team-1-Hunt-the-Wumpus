@@ -142,7 +142,29 @@ namespace Team1_Wumpus
             Player = desiredcave;
         }
 
-        
-        //method that returns locations of obstacles/player
+        public string CheckPositions()
+        {
+            if (Player == Wumpus)
+            {
+                return "wumpus";
+            } else if (Player == Bats[0])
+            {
+                return "bat";
+            } else if (Player == Bats[1])
+            {
+                return "bat";
+            } else if (Player == Pits[0])
+            {
+                return "pit";
+            } else if (Player == Pits[1])
+            {
+                return "pit";
+            } else
+            {
+                return "clear";
+            }
+        }
+
+       
     }
 }
