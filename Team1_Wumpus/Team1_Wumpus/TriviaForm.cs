@@ -13,26 +13,14 @@ namespace Team1_Wumpus
     public partial class TriviaForm : System.Windows.Forms.Form
     {
 
-        public List<Trivia> TriviaQuestions { get; set; }
-        public int NumberCorrect { get; set; }
-        int index = 0;
+        public Trivia question { get; set; }
 
-
-
-        public Trivia GetQuestion()
-        {
-            //recycles questions
-            index++;
-            if (index >= TriviaQuestions.Count) index = 0;
-            return TriviaQuestions[index];
-        }
 
 
         private void next_Click()
         {
             //makes the correct/incorrect label invisible
             labelCorrectIncorrect.Visible = false;
-            Trivia question = GetQuestion();
             labelQuestion.Text = question.Question;
             //sets button texts to the values
             buttonAnswer1.Text = question.Answer1;
@@ -42,10 +30,13 @@ namespace Team1_Wumpus
 
         private void check_Click()
         {
-            bool correct = checkAnswer(TriviaQuestions[index]);
+            bool correct = checkAnswer(question);
             if (correct)
             {
-                NumberCorrect++;
+
+            } else
+            {
+
             }
         }
 

@@ -66,13 +66,11 @@ namespace Team1_Wumpus
             {
                 if(Bats[i] == Player)
                 {
-                    int newPlayerPosition = r.Next(1, 31);
-                    if (Player != newPlayerPosition)
+                    int Old = Bats[i];
+                    while (Bats[i] == Pits[0] || Bats[i] == Pits[1] || Bats[i] == Wumpus || Bats[i] == Player || Bats[0] == Bats[1])
                     {
-                        Player = newPlayerPosition;
+                        Bats[i] = r.Next(1, 31);
                     }
-
-                    Bats[i] = r.Next(1, 31);
                     break;
                 }
             }
@@ -142,6 +140,15 @@ namespace Team1_Wumpus
             Player = desiredcave;
         }
 
+        public void BatFling()
+        {
+            Random r = new Random();
+            int Old = Player;
+            while (Player == Bats[0] || Player == Bats[1] || Player == Pits[0] || Player == Pits[1] || Player == Wumpus || Player == Old)
+            {
+                Player = r.Next(1, 31);
+            }
+        }
         public string CheckPositions()
         {
             if (Player == Wumpus)
@@ -163,6 +170,37 @@ namespace Team1_Wumpus
             {
                 return "clear";
             }
+        }
+
+        public string CheckProximity(List<int> PlayerSurroundings)
+        {
+            foreach(int AdjacentCave in PlayerSurroundings)
+            {
+                if (AdjacentCave == Wumpus)
+                {
+                    return "wumpus";
+
+                }
+                else if (AdjacentCave == Bats[0])
+                {
+                    return "bat";
+
+                }
+                else if (AdjacentCave == Bats[1])
+                {
+                    return "bat";
+
+                }
+                else if (AdjacentCave == Pits[0])
+                {
+                    return "pit";
+                }
+                else if (AdjacentCave == Pits[1])
+                {
+                    return "pit";
+                }
+            }
+            return "clear";
         }
 
        

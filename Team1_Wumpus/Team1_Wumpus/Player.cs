@@ -32,22 +32,33 @@ namespace Team1_Wumpus
             else
             {
                 Arrows--;
-                return false;
+                return true;
             }
         }
 
-        public void PurchaseArrow()
+        public bool PurchaseArrow()
         {
             bool didSpendCoin = SpendCoin(1);
             if (didSpendCoin)
             {
                 Arrows++;
+                return true;
+            } else
+            {
+                return false;
             }
+        }
+
+        public bool PurchaseSecret()
+        {
+            bool didSpendCoin = SpendCoin(2);
+            return didSpendCoin;
         }
 
         public void TakeATurn()
         {
             TurnsTaken++;
+            GoldCoins++;
         }
 
         public bool SpendCoin(int numberToSpend)

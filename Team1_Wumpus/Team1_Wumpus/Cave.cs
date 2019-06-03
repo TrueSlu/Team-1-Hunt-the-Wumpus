@@ -53,13 +53,13 @@ namespace Team1_Wumpus
             }
         }
 
-        private void ReadFile(string fileName)
+        private void ReadFile(string fileContents)
         {
-            StreamReader sr = new StreamReader(fileName);
-            string inputText = sr.ReadLine();
-            while (inputText != null)
+            string[] fileArray = fileContents.Split('\n');
+            int index = 0;
+            while (index < fileArray.Length)
             {
-                string[] strData = inputText.Split(SEP_CHAR.ToCharArray()[0]);
+                string[] strData = fileArray[index].Split(SEP_CHAR.ToCharArray()[0]);
                 int caveNum = int.Parse(strData[0]);
                 int[] data = new int[6];
                 for (int i = 0; i < 6; i++)
@@ -67,10 +67,9 @@ namespace Team1_Wumpus
                     data[i] = int.Parse(strData[i + 1]);
                 }
 
-                inputText = sr.ReadLine();
+                index++;
                 System[caveNum] = new Cave(caveNum, data);
             }
-            sr.Close();
         }
 
         public void WriteFile(string fileName)
