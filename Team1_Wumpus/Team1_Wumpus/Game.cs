@@ -13,38 +13,35 @@ namespace Team1_Wumpus
         public String Name { get; set; }
         public Player PlayerManager { get; private set; }
         public CaveSystem CaveManager { get; set; }
-        public Trivia TriviaManager { get; set; }
+        public TriviaManager TriviaObject { get; set; }
         public Location LocationManager { get; set; }
         public Sound SoundManager { get; set; }
         public HighScoreManager HighScoreTracker { get; set; }
         public GameForm GameUI { get; private set; }
 
-        public Game(String n, String c)
+        public Game(String n, String c, bool t, int caveID)
         {
 
             Name = n;
-            CaveNumber = c.ToString();
+            CaveNumber = caveID.ToString();
             PlayerManager = new Player();
-            CaveManager = new CaveSystem(CaveNumber);
-            //TriviaManager = new TriviaManager();
+            CaveManager = new CaveSystem(c);
+            TriviaObject = new TriviaManager();
             HighScoreTracker = new HighScoreManager();
             LocationManager = new Location();
+            LocationManager.Cave = CaveManager;
             SoundManager = new Sound();
 
 
-            GameForm GameUI = new GameForm();
+            GameUI = new GameForm();
             GameUI.GameObject = this;
-            SoundManager.PlayBats();
             LocationManager.InitializePosition();
+            SoundManager.PlayBackground();
+            GameUI.TestMode = t;
             GameUI.ShowDialog();
         }
 
-        public void InitializeGame()
-        {
-
-        }
-
-        public void MovePlayer(int desiredCave)
+        public string MovePlayer(int desiredCave)
         {
             LocationManager.PlayerMovement(desiredCave);
             PlayerManager.TakeATurn();
@@ -52,36 +49,76 @@ namespace Team1_Wumpus
             string PositionStatus = LocationManager.CheckPositions();
             if (PositionStatus == "wumpus")
             {
-                //trivia
-                //sound
-                LocationManager.WumpusMoves();
+                SoundManager.PlayWumpus();
+                bool didWin = TriviaObject.TriviaBattle(5, 3);
+                if (didWin)
+                {
+                    LocationManager.WumpusMoves();
+                } else
+                {
+                    EndGameNormally();
+                }
             } else if (PositionStatus == "pit")
             {
                 //trivia
                 //sound
+                SoundManager.PlayPit();
+                bool didWin = TriviaObject.TriviaBattle(3, 1);
+                if (didWin)
+                {
+                    LocationManager.WumpusMoves();
+                }
+                else
+                {
+                    EndGameNormally();
+                }
                 LocationManager.PitsMove();
             } else if (PositionStatus == "bat")
             {
                 //trivia
                 //sound
+                SoundManager.PlayBats();
                 LocationManager.BatsMove();
+                LocationManager.BatFling();
+                return "A bat flung you to another room!";
+            }
+
+            string Proximity = LocationManager.CheckProximity(CaveManager.GetConnectedList(LocationManager.Player));
+            if (Proximity == "wumpus")
+            {
+                return "The Wumpus is close.";
+            } else if (Proximity == "pit")
+            {
+                return "I feel a draft.";
+            } else if (Proximity == "bat")
+            {
+                return "Bats are squeaky.";
+            } else
+            {
+                return TriviaObject.GetSecret();
             }
 
             //get a secret thing and show it
         }
 
-        public void FireArrow(int desiredCave)
+        public bool FireArrow(int desiredCave)
         {
+            bool didShootArrow = PlayerManager.ShootArrow();
+            if (didShootArrow)
+            {
+                PlayerManager.TakeATurn();
+                if (desiredCave == LocationManager.Wumpus)
+                {
+                    PlayerManager.IsWumpusDead = true;
+                    EndGameNormally();
+                }
+            }
+
+            return didShootArrow;
+            //get a secret thing and show it
+
 
         }
-
-        public bool TriviaBattle(int NumberToAsk, int NumberToWin)
-        {
-            //call trivia thing
-
-        }
-
-
 
 
         public void EndGameNormally()
@@ -89,12 +126,12 @@ namespace Team1_Wumpus
             GameUI.Close();
             PlayerManager.CalculateScore();
             HighScore newHighScore = new HighScore(Name, CaveNumber, PlayerManager.Score);
-            HighScoreTracker.AddNewHighScore(newHighScore);
+            HighScoreTracker.WriteNewScore(newHighScore);
 
             GameEndForm CreditsForm = new GameEndForm();
             CreditsForm.PlayerObject = PlayerManager;
+            CreditsForm.PlayerName = Name;
             CreditsForm.ShowDialog();
-            
         }
     }
 }

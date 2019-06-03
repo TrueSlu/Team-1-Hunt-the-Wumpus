@@ -43,8 +43,6 @@ namespace Team1_Wumpus
         {
             string WritableScore = ManipulateScoreObject(Score);
             
-            string FetchScores =
-            Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
             using (StreamWriter outputFile = new StreamWriter("WumpusHighScores.txt", append: true))
             {

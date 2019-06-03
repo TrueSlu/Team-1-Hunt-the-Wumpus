@@ -8,24 +8,44 @@ using System.IO;
 
 namespace Team1_Wumpus
 {
-
-
     public class Sound
     {
-        //soundplayer = new sound
+        public List<SoundPlayer> Sounds= new List<SoundPlayer>();
         public void PlayBats()
         {
-            //SoundPlayer player = new SoundPlayer(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "\\batschatter.wav"));
-            //player.Play();
+            SoundPlayer BatSound = new SoundPlayer(Properties.Resources.bat);
+            BatSound.Play();
+            Sounds.Add(BatSound);
+            PlayBackground();
         }
 
-        public void background()
+        public void PlayWumpus()
+        {
+
+        }
+
+        public void PlayPit()
+        {
+            SoundPlayer PitSound = new SoundPlayer(Properties.Resources.scream);
+            PitSound.Play();
+            Sounds.Add(PitSound);
+            PlayBackground();
+        }
+
+        public void PlayBackground()
         {
             //background music
-            //player.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\2019-04-18_-_The_Epic_Boss_Fight_-_David_Fesliyan.mp3"));
-            //player.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\2019-05-09_-_Escape_Chase_-_David_Fesliyan.mp3"));
-            //player.Play();
+            SoundPlayer Background = new SoundPlayer(Properties.Resources.background);
+            Background.PlayLooping();
+            Sounds.Add(Background);
+        }
 
+        public void StopAll()
+        {
+            foreach(SoundPlayer Sound in Sounds)
+            {
+                Sound.Stop();
+            }
         }
 
     }

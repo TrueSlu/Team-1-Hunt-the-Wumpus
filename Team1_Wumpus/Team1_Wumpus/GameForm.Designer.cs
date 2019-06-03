@@ -33,8 +33,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.playerInfoBox = new System.Windows.Forms.GroupBox();
-            this.playerInfoScoreBox = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.playerInfoTurnsBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.playerInfoArrowsBox = new System.Windows.Forms.TextBox();
@@ -49,7 +47,12 @@
             this.buySecretButtonClick = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.roomNumber = new System.Windows.Forms.TextBox();
-            this.messageLabel = new System.Windows.Forms.Label();
+            this.WumpusLabel = new System.Windows.Forms.Label();
+            this.BatsLabel = new System.Windows.Forms.Label();
+            this.PitsLabel = new System.Windows.Forms.Label();
+            this.WumpusBox = new System.Windows.Forms.TextBox();
+            this.PitsBox = new System.Windows.Forms.TextBox();
+            this.BatsBox = new System.Windows.Forms.TextBox();
             this.playerInfoBox.SuspendLayout();
             this.movementBox.SuspendLayout();
             this.shopBox.SuspendLayout();
@@ -63,8 +66,9 @@
             this.buyArrowButtonClick.Name = "buyArrowButtonClick";
             this.buyArrowButtonClick.Size = new System.Drawing.Size(112, 84);
             this.buyArrowButtonClick.TabIndex = 0;
-            this.buyArrowButtonClick.Text = "Buy Arrow";
+            this.buyArrowButtonClick.Text = "Buy Arrow  (10 gold)";
             this.buyArrowButtonClick.UseVisualStyleBackColor = true;
+            this.buyArrowButtonClick.Click += new System.EventHandler(this.buyArrowButtonClick_Click);
             // 
             // fireArrowButtonClick
             // 
@@ -102,8 +106,6 @@
             // 
             // playerInfoBox
             // 
-            this.playerInfoBox.Controls.Add(this.playerInfoScoreBox);
-            this.playerInfoBox.Controls.Add(this.label5);
             this.playerInfoBox.Controls.Add(this.playerInfoTurnsBox);
             this.playerInfoBox.Controls.Add(this.label4);
             this.playerInfoBox.Controls.Add(this.playerInfoArrowsBox);
@@ -112,7 +114,7 @@
             this.playerInfoBox.Controls.Add(this.label2);
             this.playerInfoBox.Controls.Add(this.playerInfoCoinsBox);
             this.playerInfoBox.Controls.Add(this.label1);
-            this.playerInfoBox.Font = new System.Drawing.Font("Old English Text MT", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playerInfoBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playerInfoBox.Location = new System.Drawing.Point(18, 18);
             this.playerInfoBox.Margin = new System.Windows.Forms.Padding(4);
             this.playerInfoBox.Name = "playerInfoBox";
@@ -121,35 +123,12 @@
             this.playerInfoBox.TabIndex = 4;
             this.playerInfoBox.TabStop = false;
             this.playerInfoBox.Text = "Player Info";
-            this.playerInfoBox.Enter += new System.EventHandler(this.playerInfoBox_Enter);
-            // 
-            // playerInfoScoreBox
-            // 
-            this.playerInfoScoreBox.Enabled = false;
-            this.playerInfoScoreBox.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playerInfoScoreBox.Location = new System.Drawing.Point(187, 249);
-            this.playerInfoScoreBox.Margin = new System.Windows.Forms.Padding(4);
-            this.playerInfoScoreBox.Name = "playerInfoScoreBox";
-            this.playerInfoScoreBox.Size = new System.Drawing.Size(148, 28);
-            this.playerInfoScoreBox.TabIndex = 13;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(12, 252);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(50, 20);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Score";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // playerInfoTurnsBox
             // 
             this.playerInfoTurnsBox.Enabled = false;
             this.playerInfoTurnsBox.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playerInfoTurnsBox.Location = new System.Drawing.Point(187, 201);
+            this.playerInfoTurnsBox.Location = new System.Drawing.Point(190, 201);
             this.playerInfoTurnsBox.Margin = new System.Windows.Forms.Padding(4);
             this.playerInfoTurnsBox.Name = "playerInfoTurnsBox";
             this.playerInfoTurnsBox.Size = new System.Drawing.Size(148, 28);
@@ -235,7 +214,7 @@
             this.movementBox.Controls.Add(this.availableCaveMoves);
             this.movementBox.Controls.Add(this.button3);
             this.movementBox.Controls.Add(this.fireArrowButtonClick);
-            this.movementBox.Font = new System.Drawing.Font("Old English Text MT", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.movementBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.movementBox.Location = new System.Drawing.Point(404, 18);
             this.movementBox.Margin = new System.Windows.Forms.Padding(4);
             this.movementBox.Name = "movementBox";
@@ -261,7 +240,7 @@
             // 
             this.shopBox.Controls.Add(this.buySecretButtonClick);
             this.shopBox.Controls.Add(this.buyArrowButtonClick);
-            this.shopBox.Font = new System.Drawing.Font("Old English Text MT", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shopBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.shopBox.Location = new System.Drawing.Point(752, 18);
             this.shopBox.Margin = new System.Windows.Forms.Padding(4);
             this.shopBox.Name = "shopBox";
@@ -279,8 +258,9 @@
             this.buySecretButtonClick.Name = "buySecretButtonClick";
             this.buySecretButtonClick.Size = new System.Drawing.Size(112, 84);
             this.buySecretButtonClick.TabIndex = 1;
-            this.buySecretButtonClick.Text = "Buy Secret";
+            this.buySecretButtonClick.Text = "Buy Secret (5 gold)";
             this.buySecretButtonClick.UseVisualStyleBackColor = true;
+            this.buySecretButtonClick.Click += new System.EventHandler(this.buySecretButtonClick_Click);
             // 
             // label6
             // 
@@ -303,29 +283,77 @@
             this.roomNumber.Size = new System.Drawing.Size(148, 28);
             this.roomNumber.TabIndex = 8;
             // 
-            // messageLabel
+            // WumpusLabel
             // 
-            this.messageLabel.AutoSize = true;
-            this.messageLabel.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.messageLabel.Location = new System.Drawing.Point(587, 357);
-            this.messageLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.messageLabel.Name = "messageLabel";
-            this.messageLabel.Size = new System.Drawing.Size(99, 20);
-            this.messageLabel.TabIndex = 9;
-            this.messageLabel.Text = "messagelabel";
+            this.WumpusLabel.AutoSize = true;
+            this.WumpusLabel.Location = new System.Drawing.Point(29, 410);
+            this.WumpusLabel.Name = "WumpusLabel";
+            this.WumpusLabel.Size = new System.Drawing.Size(72, 18);
+            this.WumpusLabel.TabIndex = 9;
+            this.WumpusLabel.Text = "Wumpus:";
+            this.WumpusLabel.Visible = false;
+            // 
+            // BatsLabel
+            // 
+            this.BatsLabel.AutoSize = true;
+            this.BatsLabel.Location = new System.Drawing.Point(222, 410);
+            this.BatsLabel.Name = "BatsLabel";
+            this.BatsLabel.Size = new System.Drawing.Size(42, 18);
+            this.BatsLabel.TabIndex = 10;
+            this.BatsLabel.Text = "Bats:";
+            this.BatsLabel.Visible = false;
+            // 
+            // PitsLabel
+            // 
+            this.PitsLabel.AutoSize = true;
+            this.PitsLabel.Location = new System.Drawing.Point(385, 410);
+            this.PitsLabel.Name = "PitsLabel";
+            this.PitsLabel.Size = new System.Drawing.Size(37, 18);
+            this.PitsLabel.TabIndex = 11;
+            this.PitsLabel.Text = "Pits:";
+            this.PitsLabel.Visible = false;
+            // 
+            // WumpusBox
+            // 
+            this.WumpusBox.Location = new System.Drawing.Point(107, 407);
+            this.WumpusBox.Name = "WumpusBox";
+            this.WumpusBox.Size = new System.Drawing.Size(100, 24);
+            this.WumpusBox.TabIndex = 12;
+            this.WumpusBox.Visible = false;
+            // 
+            // PitsBox
+            // 
+            this.PitsBox.Location = new System.Drawing.Point(428, 410);
+            this.PitsBox.Name = "PitsBox";
+            this.PitsBox.Size = new System.Drawing.Size(100, 24);
+            this.PitsBox.TabIndex = 13;
+            this.PitsBox.Visible = false;
+            // 
+            // BatsBox
+            // 
+            this.BatsBox.Location = new System.Drawing.Point(270, 407);
+            this.BatsBox.Name = "BatsBox";
+            this.BatsBox.Size = new System.Drawing.Size(100, 24);
+            this.BatsBox.TabIndex = 14;
+            this.BatsBox.Visible = false;
             // 
             // GameForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(931, 410);
-            this.Controls.Add(this.messageLabel);
+            this.ClientSize = new System.Drawing.Size(931, 460);
+            this.Controls.Add(this.BatsBox);
+            this.Controls.Add(this.PitsBox);
+            this.Controls.Add(this.WumpusBox);
+            this.Controls.Add(this.PitsLabel);
+            this.Controls.Add(this.BatsLabel);
+            this.Controls.Add(this.WumpusLabel);
             this.Controls.Add(this.roomNumber);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.shopBox);
             this.Controls.Add(this.movementBox);
             this.Controls.Add(this.playerInfoBox);
-            this.Font = new System.Drawing.Font("Old English Text MT", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GameForm";
             this.Text = "Hunt the Wumpus";
@@ -350,8 +378,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox playerInfoNameBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox playerInfoScoreBox;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox playerInfoTurnsBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox playerInfoArrowsBox;
@@ -361,7 +387,12 @@
         private System.Windows.Forms.Button buySecretButtonClick;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox roomNumber;
-        private System.Windows.Forms.Label messageLabel;
         private System.Windows.Forms.Button movePlayerButton;
+        private System.Windows.Forms.Label WumpusLabel;
+        private System.Windows.Forms.Label BatsLabel;
+        private System.Windows.Forms.Label PitsLabel;
+        private System.Windows.Forms.TextBox WumpusBox;
+        private System.Windows.Forms.TextBox PitsBox;
+        private System.Windows.Forms.TextBox BatsBox;
     }
 }

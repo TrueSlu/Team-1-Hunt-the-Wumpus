@@ -31,10 +31,6 @@ namespace Team1_Wumpus
             {
                 "system0",
                 "system1",
-                "system2",
-                "system3",
-                "system4",
-                "system5",
             };
 
             foreach(string cave in playableCaves)
@@ -68,8 +64,13 @@ namespace Team1_Wumpus
                 MessageBox.Show("Please select a cave to play.");
             } else
             {
-                Game GameManager = new Game(nameBox.Text, caveList.Items[caveList.SelectedIndex] + ".txt");
-
+                if (caveList.SelectedIndex == 0)
+                {
+                    Game GameManager = new Game(nameBox.Text, Properties.Resources.system0, false, 0);
+                } else if (caveList.SelectedIndex == 1)
+                {
+                    Game GameManager = new Game(nameBox.Text, Properties.Resources.system1, false, 1);
+                }
             }
         }
 
@@ -80,7 +81,12 @@ namespace Team1_Wumpus
 
         private void getStartedToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("In the spirit of Team1, select a cave, type your name, and start Hunting the Wumpus without a tutorial or prior experience.");
+            //MessageBox.Show("In the spirit of Team1, select a cave, type your name, and start Hunting the Wumpus without a tutorial or prior experience.");
+        }
+
+        private void testModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Game GameManager = new Game("Test Mode", Properties.Resources.system0, true, 99);
         }
     }
 }

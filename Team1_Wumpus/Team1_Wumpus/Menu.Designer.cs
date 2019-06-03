@@ -41,6 +41,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.startGame = new System.Windows.Forms.Button();
             this.showHighScores = new System.Windows.Forms.Button();
+            this.testModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,7 +75,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -82,7 +83,8 @@
             // 
             this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem1,
-            this.getStartedToolStripMenuItem});
+            this.getStartedToolStripMenuItem,
+            this.testModeToolStripMenuItem});
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.aboutToolStripMenuItem.Text = "Help";
@@ -120,10 +122,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Modern No. 20", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(286, 68);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(159, 22);
+            this.label2.Size = new System.Drawing.Size(169, 25);
             this.label2.TabIndex = 4;
             this.label2.Text = "Hunt the Wumpus";
             // 
@@ -155,6 +157,13 @@
             this.showHighScores.Text = "High Scores";
             this.showHighScores.UseVisualStyleBackColor = true;
             this.showHighScores.Click += new System.EventHandler(this.showHighScores_Click);
+            // 
+            // testModeToolStripMenuItem
+            // 
+            this.testModeToolStripMenuItem.Name = "testModeToolStripMenuItem";
+            this.testModeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.testModeToolStripMenuItem.Text = "Test Mode";
+            this.testModeToolStripMenuItem.Click += new System.EventHandler(this.testModeToolStripMenuItem_Click);
             // 
             // Menu
             // 
@@ -195,5 +204,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button startGame;
         private System.Windows.Forms.Button showHighScores;
+        private System.Windows.Forms.ToolStripMenuItem testModeToolStripMenuItem;
     }
 }

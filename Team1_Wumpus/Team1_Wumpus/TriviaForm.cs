@@ -13,46 +13,33 @@ namespace Team1_Wumpus
     public partial class TriviaForm : System.Windows.Forms.Form
     {
 
-        public List<Trivia> TriviaQuestions { get; set; }
+        public List<Trivia> Questions { get; set; }
         public int NumberCorrect { get; set; }
         int index = 0;
 
-
-
-        public Trivia GetQuestion()
+        public TriviaForm()
         {
-            //recycles questions
-            index++;
-            if (index >= TriviaQuestions.Count) index = 0;
-            return TriviaQuestions[index];
+            InitializeComponent();
         }
 
 
-        private void next_Click()
+
+        private void LoadQuestion()
         {
             //makes the correct/incorrect label invisible
             labelCorrectIncorrect.Visible = false;
-            Trivia question = GetQuestion();
-            labelQuestion.Text = question.Question;
+            labelQuestion.Text = Questions[index].Question;
             //sets button texts to the values
-            buttonAnswer1.Text = question.Answer1;
-            buttonAnswer2.Text = question.Answer2;
-            buttonAnswer3.Text = question.Answer3;
+            buttonAnswer1.Text = Questions[index].Answer1;
+            buttonAnswer2.Text = Questions[index].Answer2;
+            buttonAnswer3.Text = Questions[index].Answer3;
         }
 
-        private void check_Click()
-        {
-            bool correct = checkAnswer(TriviaQuestions[index]);
-            if (correct)
-            {
-                NumberCorrect++;
-            }
-        }
 
-        private bool checkAnswer(Trivia Question)
+        private void checkAnswer(Trivia Question)
         {
             //checks answer
-            if (noButtonChecked.Checked)
+            if (!buttonAnswer1.Checked && !buttonAnswer2.Checked && !buttonAnswer3.Checked)
             {
                 MessageBox.Show("Please select an answer", "Error");
             }
@@ -64,12 +51,11 @@ namespace Team1_Wumpus
                     if (buttonAnswer1.Checked)
                     {
                         labelCorrectIncorrect.Text = "Correct";
-                        return true;
+                        NumberCorrect++;
                     }
                     else
                     {
                         labelCorrectIncorrect.Text = "Incorrect";
-                        return false;
                     }
                 }
                 else if (Question.CorrectAnswer == 2)
@@ -77,12 +63,11 @@ namespace Team1_Wumpus
                     if (buttonAnswer2.Checked)
                     {
                         labelCorrectIncorrect.Text = "Correct";
-                        return true;
+                        NumberCorrect++;
                     }
                     else
                     {
                         labelCorrectIncorrect.Text = "Incorrect";
-                        return false;
                     }
                 }
                 else if (Question.CorrectAnswer == 3)
@@ -90,27 +75,42 @@ namespace Team1_Wumpus
                     if (buttonAnswer3.Checked)
                     {
                         labelCorrectIncorrect.Text = "Correct";
-                        return true;
+                        NumberCorrect++;
                     }
                     else
                     {
                         labelCorrectIncorrect.Text = "Incorrect";
-                        return false;
                     }
                 }
             }
-            return false;
         }
 
         private void TriviaForm_Load(object sender, EventArgs e)
         {
-
+            LoadQuestion();
         }
+
+
 
         private void next_Click_1(object sender, EventArgs e)
         {
-            check_Click();
-            next_Click();
+            try
+            {
+                index++;
+                LoadQuestion();
+                next.Enabled = false;
+                button1.Enabled = true;
+            } catch
+            {
+                this.Close();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            checkAnswer(Questions[index]);
+            button1.Enabled = false;
+            next.Enabled = true;
         }
     }
 }
