@@ -14,6 +14,7 @@ namespace Team1_Wumpus
     {
 
         public Player PlayerObject { get; set; }
+        public string PlayerName { get; set; }
 
         public GameEndForm()
         {
@@ -29,7 +30,7 @@ namespace Team1_Wumpus
             {
                 gameLabel.Text = "Game Over!";
             }
-
+            playerInfoNameBox.Text = PlayerName;
             playerInfoArrowsBox.Text = PlayerObject.Arrows.ToString();
             playerInfoCoinsBox.Text = PlayerObject.GoldCoins.ToString();
             playerInfoTurnsBox.Text = PlayerObject.TurnsTaken.ToString();

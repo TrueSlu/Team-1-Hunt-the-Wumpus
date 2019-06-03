@@ -66,10 +66,10 @@ namespace Team1_Wumpus
             {
                 if (caveList.SelectedIndex == 0)
                 {
-                    Game GameManager = new Game(nameBox.Text, Properties.Resources.system0, false);
+                    Game GameManager = new Game(nameBox.Text, Properties.Resources.system0, false, 0);
                 } else if (caveList.SelectedIndex == 1)
                 {
-                    Game GameManager = new Game(nameBox.Text, Properties.Resources.system1, false);
+                    Game GameManager = new Game(nameBox.Text, Properties.Resources.system1, false, 1);
                 }
             }
         }
@@ -86,7 +86,7 @@ namespace Team1_Wumpus
 
         private void testModeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Game GameManager = new Game("Test Mode", Properties.Resources.system0, true);
+            Game GameManager = new Game("Test Mode", Properties.Resources.system0, true, 99);
         }
     }
 }

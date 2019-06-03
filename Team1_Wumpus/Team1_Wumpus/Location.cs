@@ -16,7 +16,7 @@ namespace Team1_Wumpus
         public int Cavenumber { get; set; }
 
         public List<int> ConnectedCaves { get; set; }
-     
+
         //method that initializes locations of objects
         public void InitializePosition()
         {
@@ -32,26 +32,38 @@ namespace Team1_Wumpus
 
             Wumpus = r.Next(1, 31);
             Player = r.Next(1, 31);
-            if(bat1 == bat2||bat1==pit1||bat1==pit2 || bat1 ==Wumpus || bat1 ==Player)
+            List<int> startingAdjacents = Cave.GetConnectedList(Player);
+
+            while (startingAdjacents.IndexOf(bat1) != -1 || bat1 == bat2 || bat1 == pit1 || bat1 == pit2 || bat1 == Wumpus || bat1 == Player)
             {
+                    
                 bat1 = r.Next(1, 31);
             }
-            else if(bat2==pit1||bat2==pit2||bat2==Wumpus||bat2==Player)
+
+            while (startingAdjacents.IndexOf(bat2) != -1 || bat2 == bat1 || bat2 == pit1 || bat2 == pit2 || bat2 == Wumpus || bat2 == Player)
             {
+                    
                 bat2 = r.Next(1, 31);
             }
-            else if(pit1==pit2||pit1==Wumpus||pit1==Player)
+
+            while (startingAdjacents.IndexOf(pit1) != -1 || pit1 == bat2 || pit1 == pit2 || pit1 == Wumpus || pit1 == Player)
             {
+                    
                 pit1 = r.Next(1, 31);
             }
-            else if(pit2==Wumpus||pit2==Player)
+
+            while (startingAdjacents.IndexOf(pit2) != -1 || pit2 == bat1 || pit2 == bat2 || pit1 == pit2 || pit2 == Wumpus || pit2 == Player)
             {
+                   
                 pit2 = r.Next(1, 31);
             }
-            else if(Wumpus==Player)
+
+            while (startingAdjacents.IndexOf(Wumpus) != -1 || Wumpus == bat1 || Wumpus == bat2 || Wumpus == pit1 || Wumpus == pit2 || Wumpus == Player)
             {
                 Wumpus = r.Next(1, 31);
             }
+
+
             Bats[0] = bat1;
             Bats[1] = bat2;
             Pits[0] = pit1;
@@ -64,7 +76,7 @@ namespace Team1_Wumpus
             Random r = new Random();
             for (int i = 0; i < Bats.Length; i++)
             {
-                if(Bats[i] == Player)
+                if (Bats[i] == Player)
                 {
                     int Old = Bats[i];
                     while (Bats[i] == Pits[0] || Bats[i] == Pits[1] || Bats[i] == Wumpus || Bats[i] == Player || Bats[0] == Bats[1])
@@ -81,54 +93,45 @@ namespace Team1_Wumpus
             Random r = new Random();
             for (int i = 0; i < Pits.Length; i++)
             {
-                if(Pits[i] == Player)
+                if (Pits[i] == Player)
                 {
-                    int newPlayerPosition = r.Next(1, 31);
-                    if (Player != newPlayerPosition)
+                    int Old = Pits[i];
+                    while (Pits[i] == Bats[0] || Pits[i] == Bats[1] || Pits[i] == Wumpus || Pits[i] == Player || Pits[0] == Pits[1])
                     {
-                        Player = newPlayerPosition;
+                        Pits[i] = r.Next(1, 31);
                     }
-
-                    Pits[i] = r.Next(1, 31);
                     break;
-
                 }
-
             }
         }
 
         public void WumpusMoves()
         {
-            int numberofmoves;
-            if(Wumpus == Player)
+            Random r = new Random();
+            int TempWumpusLocation = Wumpus;
+            while (TempWumpusLocation == Player || TempWumpusLocation == Pits[0] || TempWumpusLocation == Pits[1] || TempWumpusLocation == Bats[0] || TempWumpusLocation == Bats[1] || TempWumpusLocation == Wumpus)
             {
-                Random r = new Random();
-                numberofmoves = r.Next(1, 5);
+                TempWumpusLocation = Wumpus;
+                int numberofmoves = r.Next(2, 5);
                 for (int i = 0; i < numberofmoves; i++)
                 {
-                    int randomCave = r.Next(1, Cave.GetConnectedList(Cavenumber).Count);
-                    Cave.GetConnectedList(Cavenumber);
-                    WumpusMovement(Cavenumber);
-                }
-                
-            }
-            for (int i = 0; i < Pits.Length; i++)
-            {
-                if(Wumpus == i)
-                {
-                    Random r = new Random();
-                    Pits[i] = r.Next(1,31);
-                }
-                    
-            }
-            for(int i = 0; i<Bats.Length; i++)
-            {
-                if(Wumpus == i)
-                {
-                    Random r = new Random();
-                    Bats[i] = r.Next(1, 31);
+                    List<int> connectedCaves = Cave.GetConnectedList(TempWumpusLocation);
+                    int newCaveIndex = r.Next(0, connectedCaves.Count);
+                    if (TempWumpusLocation == connectedCaves[newCaveIndex])
+                    {
+                        if (newCaveIndex == connectedCaves.Count - 1)
+                        {
+                            newCaveIndex--;
+                        } else
+                        {
+                            newCaveIndex++;
+                        }
+                    }
+                    TempWumpusLocation = connectedCaves[newCaveIndex];
                 }
             }
+            WumpusMovement(TempWumpusLocation);
+            
         }
         public void WumpusMovement(int cavenumber)
         {
@@ -154,19 +157,24 @@ namespace Team1_Wumpus
             if (Player == Wumpus)
             {
                 return "wumpus";
-            } else if (Player == Bats[0])
+            }
+            else if (Player == Bats[0])
             {
                 return "bat";
-            } else if (Player == Bats[1])
+            }
+            else if (Player == Bats[1])
             {
                 return "bat";
-            } else if (Player == Pits[0])
+            }
+            else if (Player == Pits[0])
             {
                 return "pit";
-            } else if (Player == Pits[1])
+            }
+            else if (Player == Pits[1])
             {
                 return "pit";
-            } else
+            }
+            else
             {
                 return "clear";
             }
@@ -174,7 +182,7 @@ namespace Team1_Wumpus
 
         public string CheckProximity(List<int> PlayerSurroundings)
         {
-            foreach(int AdjacentCave in PlayerSurroundings)
+            foreach (int AdjacentCave in PlayerSurroundings)
             {
                 if (AdjacentCave == Wumpus)
                 {
@@ -203,6 +211,6 @@ namespace Team1_Wumpus
             return "clear";
         }
 
-       
+
     }
 }

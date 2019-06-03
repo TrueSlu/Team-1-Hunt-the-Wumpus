@@ -19,16 +19,17 @@ namespace Team1_Wumpus
         public HighScoreManager HighScoreTracker { get; set; }
         public GameForm GameUI { get; private set; }
 
-        public Game(String n, String c, bool t)
+        public Game(String n, String c, bool t, int caveID)
         {
 
             Name = n;
-            CaveNumber = c.ToString();
+            CaveNumber = caveID.ToString();
             PlayerManager = new Player();
-            CaveManager = new CaveSystem(CaveNumber);
+            CaveManager = new CaveSystem(c);
             TriviaObject = new TriviaManager();
             HighScoreTracker = new HighScoreManager();
             LocationManager = new Location();
+            LocationManager.Cave = CaveManager;
             SoundManager = new Sound();
 
 
@@ -50,7 +51,7 @@ namespace Team1_Wumpus
             {
                 SoundManager.PlayWumpus();
                 //bool didWin = TriviaObject.TriviaBattle(5, 3);
-                bool didWin = true;
+                bool didWin = false;
                 if (didWin)
                 {
                     LocationManager.WumpusMoves();
@@ -63,7 +64,7 @@ namespace Team1_Wumpus
                 //trivia
                 //sound
                 SoundManager.PlayPit();
-                bool didWin = true;
+                bool didWin = false;
                 //bool didWin = TriviaObject.TriviaBattle(5, 3);
                 if (didWin)
                 {
@@ -135,10 +136,11 @@ namespace Team1_Wumpus
             GameUI.Close();
             PlayerManager.CalculateScore();
             HighScore newHighScore = new HighScore(Name, CaveNumber, PlayerManager.Score);
-            HighScoreTracker.AddNewHighScore(newHighScore);
+            HighScoreTracker.WriteNewScore(newHighScore);
 
             GameEndForm CreditsForm = new GameEndForm();
             CreditsForm.PlayerObject = PlayerManager;
+            CreditsForm.PlayerName = Name;
             CreditsForm.ShowDialog();
         }
     }
