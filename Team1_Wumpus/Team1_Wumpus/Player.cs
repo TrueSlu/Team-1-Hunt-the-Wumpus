@@ -38,7 +38,7 @@ namespace Team1_Wumpus
 
         public bool PurchaseArrow()
         {
-            bool didSpendCoin = SpendCoin(1);
+            bool didSpendCoin = SpendCoin(10);
             if (didSpendCoin)
             {
                 Arrows++;
@@ -51,7 +51,7 @@ namespace Team1_Wumpus
 
         public bool PurchaseSecret()
         {
-            bool didSpendCoin = SpendCoin(2);
+            bool didSpendCoin = SpendCoin(5);
             return didSpendCoin;
         }
 

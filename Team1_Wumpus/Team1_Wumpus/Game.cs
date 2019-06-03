@@ -50,8 +50,7 @@ namespace Team1_Wumpus
             if (PositionStatus == "wumpus")
             {
                 SoundManager.PlayWumpus();
-                //bool didWin = TriviaObject.TriviaBattle(5, 3);
-                bool didWin = false;
+                bool didWin = TriviaObject.TriviaBattle(5, 3);
                 if (didWin)
                 {
                     LocationManager.WumpusMoves();
@@ -64,8 +63,7 @@ namespace Team1_Wumpus
                 //trivia
                 //sound
                 SoundManager.PlayPit();
-                bool didWin = false;
-                //bool didWin = TriviaObject.TriviaBattle(5, 3);
+                bool didWin = TriviaObject.TriviaBattle(3, 1);
                 if (didWin)
                 {
                     LocationManager.WumpusMoves();
@@ -121,14 +119,6 @@ namespace Team1_Wumpus
 
 
         }
-
-        public void TriviaBattle(int NumberToAsk, int NumberToWin)
-        {
-            //call trivia thing
-
-        }
-
-
 
 
         public void EndGameNormally()

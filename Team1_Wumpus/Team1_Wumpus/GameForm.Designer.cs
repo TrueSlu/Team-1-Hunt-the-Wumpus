@@ -66,7 +66,7 @@
             this.buyArrowButtonClick.Name = "buyArrowButtonClick";
             this.buyArrowButtonClick.Size = new System.Drawing.Size(112, 84);
             this.buyArrowButtonClick.TabIndex = 0;
-            this.buyArrowButtonClick.Text = "Buy Arrow  (1 gold)";
+            this.buyArrowButtonClick.Text = "Buy Arrow  (10 gold)";
             this.buyArrowButtonClick.UseVisualStyleBackColor = true;
             this.buyArrowButtonClick.Click += new System.EventHandler(this.buyArrowButtonClick_Click);
             // 
@@ -258,7 +258,7 @@
             this.buySecretButtonClick.Name = "buySecretButtonClick";
             this.buySecretButtonClick.Size = new System.Drawing.Size(112, 84);
             this.buySecretButtonClick.TabIndex = 1;
-            this.buySecretButtonClick.Text = "Buy Secret (2 gold)";
+            this.buySecretButtonClick.Text = "Buy Secret (5 gold)";
             this.buySecretButtonClick.UseVisualStyleBackColor = true;
             this.buySecretButtonClick.Click += new System.EventHandler(this.buySecretButtonClick_Click);
             // 

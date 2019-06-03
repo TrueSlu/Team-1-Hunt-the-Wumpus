@@ -172,6 +172,40 @@ namespace Team1_Wumpus
             return TriviaSecrets[rnd.Next(0, TriviaSecrets.Count)];
         }
 
+        private Trivia GetQuestion()
+        {
+            Random r = new Random();
+
+            int index = r.Next(0, TriviaQuestions.Count);
+            while (ShownQuestionIDs.IndexOf(TriviaQuestions[index].UUID) != -1)
+            {
+                index = r.Next(0, TriviaQuestions.Count);
+            }
+            ShownQuestionIDs.Add(TriviaQuestions[index].UUID);
+            return TriviaQuestions[index];
+        }
+
+        public bool TriviaBattle(int NumberToAsk, int NumberToWin)
+        {
+            List<Trivia> NewQuestions = new List<Trivia>();
+            for (int i = 0; i < NumberToAsk; i++)
+            {
+                NewQuestions.Add(GetQuestion());
+            }
+
+            TriviaForm TriviaDialog = new TriviaForm();
+            TriviaDialog.Questions = NewQuestions;
+            TriviaDialog.ShowDialog();
+
+            if (TriviaDialog.NumberCorrect < NumberToWin)
+            {
+                return false;
+            } else
+            {
+                return true;
+            }
+        }
+
     }
     
 }
