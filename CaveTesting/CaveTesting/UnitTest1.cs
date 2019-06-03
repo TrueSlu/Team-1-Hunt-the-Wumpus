@@ -7,15 +7,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CaveTests
 {
     [TestClass]
-    public class CaveConstructorTests
+    public class CaveTests
     {
-        [TestMethod]
-        public void Cave_Number_Starts_Correct()
-        {
-            var cave = new Cave(1);
-            Assert.AreEqual(1, cave.CaveNumber);
-        }
 
+        //caveSystem tests
         [TestMethod]
         public void Write_File_AllConnect_Test()
         {
@@ -25,21 +20,9 @@ namespace CaveTests
         }
 
         [TestMethod]
-        public void TestRandom()
-        {
-            var caveSys = new CaveSystem('r');
-
-            caveSys.WriteFile("randCave.txt");
-        }
-
-        [TestMethod]
         public void ReadFileTest()
         {
             var caveSys = new CaveSystem("allConnected.txt");
-
-            Trace.Listeners.Add(new TextWriterTraceListener(Console.Out));
-            // or Trace.Listeners.Add(new ConsoleTraceListener());
-            Trace.WriteLine("Hello World");
 
             //CollectionAssert.AreEqual(caveSys.GetConnectedArray(1), new int[] { 25, 26, 2, 7, 6, 30 });
             //CollectionAssert.AreEqual(caveSys.GetConnectedArray(2), new int[] { 26, 3, 9, 8, 7, 1 });
@@ -69,6 +52,44 @@ namespace CaveTests
             //removing duplicates and making connections double sided
             debug.Close();
         }
+
+        [TestMethod]
+        public void CaveSystem_system1_ReadsCorrectly()
+        {
+            var caveSys = new CaveSystem("system1.txt");
+
+            for (int i = 1; i <= 30; i++)
+            {
+                int[] ThisArray = caveSys.GetConnectedArray(i);
+
+
+                switch (i)
+                {
+                    case 1:
+                        CollectionAssert.AreEqual(ThisArray, new int[] {0,0,2,7,0,0 });
+                        break;
+                    case 2:
+                        CollectionAssert.AreEqual(ThisArray, new int[] {0,3,0,0,7,1});
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            //removing duplicates and making connections double sided
+        }
+
+        //cave tests
+        [TestMethod]
+        public void Cave_Number_Starts_Correct()
+        {
+            for (int caveNumber = 1; caveNumber <= 30; caveNumber++)
+            {
+                var cave = new Cave(caveNumber);
+                Assert.AreEqual(caveNumber, cave.CaveNumber);
+            }
+        }
+
     }
 }
 

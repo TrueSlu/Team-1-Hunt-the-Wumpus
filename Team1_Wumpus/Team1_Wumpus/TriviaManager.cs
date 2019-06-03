@@ -69,7 +69,7 @@ namespace Team1_Wumpus
                 QuestionsToShow.Add(TriviaQuestions[QuestionNumber]);
             }
 
-            TriviaDialog.Quset
+            TriviaDialog.Quset;
         }
 
         public void NextQuestionInDialog()

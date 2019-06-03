@@ -109,7 +109,7 @@ namespace Team1_Wumpus
 
             return toReturn;
         }
-        public void MakeRandomSystem()
+        public void MakeRandomSystem()  //does not work
         {
             Random r = new Random();
             int[] numConnections = new int[31];         // stores number of connections randomly made

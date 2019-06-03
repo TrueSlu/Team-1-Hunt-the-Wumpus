@@ -3,12 +3,13 @@ using System.IO;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using System.Linq;
 
 namespace CaveTesting
 {
     public class CaveSystem
     {
-        string SEP_CHAR = "\t";
+        private string SEP_CHAR = "\t";
 
         //format of the lists returned are 
         //six integer list
@@ -23,7 +24,20 @@ namespace CaveTesting
 
         public CaveSystem(string fileName)
         {
+            for (int i = 1; i <= 30; i++)
+            {
+                System[i] = new Cave();
+            }
             ReadFile(fileName);
+        }
+
+        public CaveSystem(string fileName, bool isHumanReadable)
+        {
+            for (int i = 1; i <= 30; i++)
+            {
+                System[i] = new Cave();
+            }
+            ReadHumanReadableFile(fileName.ToString()); ;
         }
 
         public CaveSystem(char mode)
@@ -33,7 +47,7 @@ namespace CaveTesting
                 System[i] = new Cave();
             }
 
-        if (mode == 'r')
+            if (mode == 'r')
             {
                 MakeRandomSystem();
             }
@@ -51,11 +65,12 @@ namespace CaveTesting
 
         private void ReadFile(string fileName)
         {
+            char sepChar = SEP_CHAR.ToCharArray()[0];
             StreamReader sr = new StreamReader(fileName);
             string inputText = sr.ReadLine();
             while (inputText != null)
             {
-                string[] strData = inputText.Split(SEP_CHAR.ToCharArray()[0]);
+                List<string> strData = inputText.Split(sepChar).ToList();
                 int caveNum = int.Parse(strData[0]);
                 int[] data = new int[6];
                 for (int i = 0; i < 6; i++)
@@ -69,6 +84,28 @@ namespace CaveTesting
             sr.Close();
         }
 
+        public void ReadHumanReadableFile(string fileName)
+        {
+            // reads in the easily readable format for files
+            StreamReader sr = new StreamReader(fileName);
+            string inputLine = sr.ReadLine();
+            while (inputLine != null)
+            {
+                List<string> strData = inputLine.Split(SEP_CHAR.ToCharArray()[0]).ToList();
+                int caveNum = int.Parse(strData[0]);
+                strData.RemoveAt(0);
+                List<int> intDirections = new List<int>();
+                foreach(string connectionDir in strData)
+                {
+                    intDirections.Add(int.Parse(connectionDir));
+                }
+                intDirections.Sort();
+                inputLine = sr.ReadLine();
+                System[caveNum] = new Cave(caveNum, intDirections);
+            }
+
+            sr.Close();
+        }
         public void WriteFile(string fileName)
         {
             StreamWriter fout = new StreamWriter(fileName);
@@ -96,15 +133,16 @@ namespace CaveTesting
             Random r = new Random();
             int[] numConnections = new int[31];
             int[,] toReturn = new int[31, 6];
-            for(int i=1; i<=30;i++)
+            for (int i = 1; i <= 30; i++)
             {
                 numConnections[i] = r.Next(1, 4);
             }
 
             infoOut.Close();
+
             return toReturn;
         }
-        public void MakeRandomSystem()
+        public void MakeRandomSystem()  //does not work
         {
             Random r = new Random();
             int[] numConnections = new int[31];         // stores number of connections randomly made
@@ -115,7 +153,7 @@ namespace CaveTesting
             StreamWriter infoOut = new StreamWriter("values.txt");  //debug information
 
             //making one connection for each room, as required
-            for (int caveNum = 1; caveNum <=30; caveNum++)
+            for (int caveNum = 1; caveNum <= 30; caveNum++)
             {
                 Cave ThisCave = System[caveNum];
                 int connectionDirection = r.Next(0, 6); //random direction to make
@@ -327,7 +365,7 @@ namespace CaveTesting
             ConnectedCaves = new int[] { 0, 0, 0, 0, 0, 0 };
             foreach (int direction in dirs)
             {
-                ConnectedCaves[direction] = AdjacentCaves[direction];
+                ConnectedCaves[direction%6] = AdjacentCaves[direction%6];
             }
         }
         public Cave() { }
