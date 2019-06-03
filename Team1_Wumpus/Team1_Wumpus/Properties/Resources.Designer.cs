@@ -19,7 +19,7 @@ namespace Team1_Wumpus.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -163,6 +163,154 @@ namespace Team1_Wumpus.Properties {
         internal static string system1 {
             get {
                 return ResourceManager.GetString("system1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1	0	0	0	7	0	0
+        ///2	0	3	0	8	0	0
+        ///3	0	0	0	9	2	0
+        ///4	0	5	0	10	0	0
+        ///5	0	0	0	11	4	0
+        ///6	0	0	0	12	0	0
+        ///7	1	0	0	13	0	0
+        ///8	2	0	0	14	0	0
+        ///9	3	0	0	15	0	0
+        ///10	4	0	0	16	0	0
+        ///11	5	0	0	17	0	0
+        ///12	6	0	0	18	0	0
+        ///13	7	0	0	19	0	0
+        ///14	8	0	0	20	0	0
+        ///15	9	0	0	21	0	0
+        ///16	10	0	0	22	0	0
+        ///17	11	0	0	23	0	0
+        ///18	12	0	0	24	0	0
+        ///19	13	0	0	25	0	0
+        ///20	14	0	0	26	0	0
+        ///21	15	0	0	27	0	0
+        ///22	16	0	0	28	0	0
+        ///23	17	0	0	29	0	0
+        ///24	18	0	0	30	0	0
+        ///25	19	0	26	0	0	0
+        ///26	20	0	0	2	0	25
+        ///27	21	0	28	0	0	0
+        ///28	22	0	0	0	0	27
+        ///29	23	0	30	0	0	0
+        ///30	24	0	0	0	0	29        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string system2 {
+            get {
+                return ResourceManager.GetString("system2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1	0	0	2	7	0	0
+        ///2	0	3	0	8	0	1
+        ///3	0	0	4	0	2	0
+        ///4	0	5	0	0	0	3
+        ///5	0	0	6	0	4	0
+        ///6	0	0	0	12	0	5
+        ///7	1	0	0	13	0	0
+        ///8	2	0	15	14	0	0
+        ///9	3	0	10	0	0	0
+        ///10	0	11	0	0	0	9
+        ///11	0	0	0	17	10	0
+        ///12	6	0	0	18	0	0
+        ///13	7	0	0	13	0	0
+        ///14	8	0	0	20	0	0
+        ///15	0	0	16	0	0	8
+        ///16	0	0	0	0	0	15
+        ///17	11	0	0	23	0	0
+        ///18	12	0	0	24	0	0
+        ///19	13	0	0	25	0	0
+        ///20	14	21	0	0	0	0
+        ///21	0	0	22	0	20	0
+        ///22	0	23	0	0	0	21
+        ///23	17	0	0	0	22	0
+        ///24	18	0	0	30	0	0	
+        ///25	19	0	26	0	0	0
+        ///26	0	27	0	0	0	25
+        ///27	0	0	28	0	26	0
+        ///28	0	29	0	0	0	27
+        ///29	0	0	30	0	28	0
+        ///30	24	0	0	0	0	29        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string system3 {
+            get {
+                return ResourceManager.GetString("system3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1	0	0	2	0	0	30
+        ///2	0	0	9	0	0	1
+        ///3	0	0	4	0	0	26
+        ///4	0	0	11	0	0	3
+        ///5	0	0	6	0	0	28
+        ///6	0	0	7	0	0	5
+        ///7	0	0	8	0	0	6
+        ///8	0	0	15	0	0	7
+        ///9	0	0	10	0	0	2
+        ///10	0	0	17	0	0	9
+        ///11	0	0	12	0	0	4
+        ///12	0	0	13	0	0	11
+        ///13	0	0	14	0	0	12
+        ///14	0	0	21	0	0	13
+        ///15	0	0	16	0	0	8
+        ///16	0	0	23	0	0	15
+        ///17	0	0	18	0	0	10
+        ///18	0	0	19	0	0	17
+        ///19	0	0	20	0	0	18
+        ///20	0	0	27	0	0	19
+        ///21	0	0	22	0	0	14
+        ///22	0	0	29	0	0	21
+        ///23	0	0	24	0	0	16
+        ///24	0	0	25	0	0	23
+        ///25	0	0	26	0	0	24
+        ///26	0	0	3	0	0	25
+        ///27	0	0	28	0	0	20
+        ///28	0	0	5	0	0	27
+        ///29	0	0	30	0	0	22
+        ///30	0	0	1	0	0	29        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string system4 {
+            get {
+                return ResourceManager.GetString("system4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1	25	26	2	7	6	30
+        ///2	26	3	9	8	7	1
+        ///3	27	28	4	9	2	26
+        ///4	28	5	11	10	9	3
+        ///5	29	30	6	11	4	28
+        ///6	30	1	7	12	11	5
+        ///7	1	2	8	13	12	6
+        ///8	2	9	15	14	13	7
+        ///9	3	4	10	15	8	2
+        ///10	4	11	17	16	15	9
+        ///11	5	6	12	17	10	4
+        ///12	6	7	13	18	17	11
+        ///13	7	8	14	19	18	12
+        ///14	8	15	21	20	19	13
+        ///15	9	10	16	21	14	8
+        ///16	10	17	23	22	21	15
+        ///17	11	12	18	23	16	10
+        ///18	12	13	19	24	23	17
+        ///19	13	14	20	25	24	18
+        ///20	14	21	27	26	25	19
+        ///21	15	16	22	27	20	14
+        ///22	16	23	29	28	27	21
+        ///23	17	18	24	29	22	16
+        ///24	18	19	25	30	29	23
+        ///25	19	20	26	1	30	24
+        ///26	20	27	3	2	1 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string system5 {
+            get {
+                return ResourceManager.GetString("system5", resourceCulture);
             }
         }
     }

@@ -63,12 +63,6 @@ namespace Team1_Wumpus
             TriviaQuestions.Add(q14);
             TriviaQuestions.Add(q15);
 
-<<<<<<< HEAD
-            TriviaDialog.Quset;
-        }
-=======
->>>>>>> e2039f485b02e5693ca20d41217fb98a0eadced9
-
             TriviaSecrets.Add("If you have 3 quarters, 4 dimes, and 4 pennies, you have $1.19. You also have the largest amount of money in coins without being able to make change for a dollar.");
             TriviaSecrets.Add("The numbers '172' can be found on the back of the U.S. $5 dollar bill in the bushes at the base of the Lincoln Memorial.");
             TriviaSecrets.Add("President Kennedy was the fastest random speaker in the world with upwards of 350 words per minute.");

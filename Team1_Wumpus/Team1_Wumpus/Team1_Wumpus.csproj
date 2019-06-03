@@ -140,6 +140,10 @@
     <Content Include="resources\bat.wav" />
     <Content Include="resources\scream.wav" />
     <Content Include="resources\system0.txt" />
+    <None Include="resources\system5.txt" />
+    <None Include="resources\system4.txt" />
+    <None Include="resources\system3.txt" />
+    <None Include="resources\system2.txt" />
     <None Include="resources\system1.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

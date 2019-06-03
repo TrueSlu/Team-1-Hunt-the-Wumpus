@@ -133,4 +133,16 @@
   <data name="system1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\system1.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="system2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\system2.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="system3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\system3.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="system4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\system4.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="system5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\system5.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
 </root>

@@ -31,6 +31,10 @@ namespace Team1_Wumpus
             {
                 "system0",
                 "system1",
+                "system2",
+                "system3",
+                "system4",
+                "system5",
             };
 
             foreach(string cave in playableCaves)
@@ -70,6 +74,22 @@ namespace Team1_Wumpus
                 } else if (caveList.SelectedIndex == 1)
                 {
                     Game GameManager = new Game(nameBox.Text, Properties.Resources.system1, false, 1);
+                }
+                else if (caveList.SelectedIndex == 2)
+                {
+                    Game GameManager = new Game(nameBox.Text, Properties.Resources.system2, false, 2);
+                }
+                else if (caveList.SelectedIndex == 3)
+                {
+                    Game GameManager = new Game(nameBox.Text, Properties.Resources.system3, false, 3);
+                }
+                else if (caveList.SelectedIndex == 4)
+                {
+                    Game GameManager = new Game(nameBox.Text, Properties.Resources.system4, false, 4);
+                }
+                else if (caveList.SelectedIndex == 5)
+                {
+                    Game GameManager = new Game(nameBox.Text, Properties.Resources.system5, false, 5);
                 }
             }
         }
